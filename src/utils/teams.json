@@ -1,0 +1,100 @@
+{
+  "data": [
+    {
+      "name": "PSG",
+      "rating": "5",
+      "image": "https://www.thesportsdb.com/images/media/team/badge/xtwxyt1421431860.png",
+      "type": "club"
+    },
+    {
+      "name": "Manchester City",
+      "rating": "5",
+      "image": "https://www.thesportsdb.com/images/media/team/badge/xtwxyt1422031421.png",
+      "type": "club"
+    },
+    {
+      "name": "Real Madrid",
+      "rating": "5",
+      "image": "https://www.thesportsdb.com/images/media/team/badge/xtwxyt1422031597.png",
+      "type": "club"
+    },
+    {
+      "name": "Barcelona",
+      "rating": "5",
+      "image": "https://www.thesportsdb.com/images/media/team/badge/xtwxyt1422031860.png",
+      "type": "club"
+    },
+    {
+      "name": "Bayern Munich",
+      "rating": "5",
+      "image": "https://www.thesportsdb.com/images/media/team/badge/xtwxyt1422031970.png",
+      "type": "club"
+    },
+    {
+      "name": "Liverpool",
+      "rating": "5",
+      "image": "https://www.thesportsdb.com/images/media/team/badge/xtwxyt1422032315.png",
+      "type": "club"
+    },
+    {
+      "name": "Chelsea",
+      "rating": "5",
+      "image": "https://www.thesportsdb.com/images/media/team/badge/xtwxyt1422032685.png",
+      "type": "club"
+    },
+    {
+      "name": "Manchester United",
+      "rating": "5",
+      "image": "https://www.thesportsdb.com/images/media/team/badge/xtwxyt1422032965.png",
+      "type": "club"
+    },
+    {
+      "name": "Inter de Milán",
+      "rating": "5",
+      "image": "https://www.thesportsdb.com/images/media/team/badge/xtwxyt1422033045.png",
+      "type": "club"
+    },
+    {
+      "name": "España",
+      "rating": "5",
+      "image": "https://www.thesportsdb.com/images/media/team/badge/xtwxyt1422033135.png",
+      "type": "country"
+    },
+    {
+      "name": "Argentina",
+      "rating": "5",
+      "image": "https://www.thesportsdb.com/images/media/team/badge/xtwxyt1422033225.png",
+      "type": "country"
+    },
+    {
+      "name": "Brasil",
+      "rating": "5",
+      "image": "https://www.thesportsdb.com/images/media/team/badge/xtwxyt1422033225.png",
+      "type": "country"
+    },
+    {
+      "name": "Francia",
+      "rating": "5",
+      "image": "https://www.thesportsdb.com/images/media/team/badge/xtwxyt1422033225.png",
+      "type": "country"
+    },
+    {
+      "name": "Bélgica",
+      "rating": "5",
+      "image": "https://www.thesportsdb.com/images/media/team/badge/xtwxyt1422033225.png",
+      "type": "country"
+    },
+    {
+      "name": "Holanda",
+      "rating": "5",
+      "image": "https://www.thesportsdb.com/images/media/team/badge/xtwxyt1422033225.png",
+      "type": "country"
+    },
+    {
+      "name": "Inglaterra",
+      "rating": "5",
+      "image": "https://www.thesportsdb.com/images/media/team/badge/xtwxyt1422033225.png",
+      "type": "country"
+    }
+  ]
+}
