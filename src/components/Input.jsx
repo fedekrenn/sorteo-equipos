@@ -1,0 +1,25 @@
+import { useState } from 'react'
+
+// eslint-disable-next-line react/prop-types
+export default function Inputs ({ index, handlePlayerChange }) {
+  const [name, setName] = useState('')
+
+  const handleChange = (event) => {
+    const value = event.target.value
+    setName(value)
+    handlePlayerChange(index, value)
+  }
+
+  return (
+    <label className='block'>
+      <span>Nombre {index + 1}:</span>
+      <input
+        required
+        type='text'
+        className='form-input mt-1 block w-full text-black'
+        value={name}
+        onChange={handleChange}
+      />
+    </label>
+  )
+}
