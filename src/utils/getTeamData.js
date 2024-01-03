@@ -73,3 +73,16 @@ export const getPairTeamData = (listOfPlayers, countries) => {
     }
   })
 }
+
+export const getTwoRandomTeams = (countries) => {
+  let teams
+
+  if (countries) {
+    teams = teamsData.data.filter(team => team.type === 'country')
+  } else {
+    teams = teamsData.data.filter(team => team.type === 'club')
+  }
+
+  const sorted = randomSort(teams)
+  return sorted.slice(0, 2)
+}
