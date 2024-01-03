@@ -3,97 +3,97 @@
     {
       "name": "PSG",
       "rating": "5",
-      "image": "https://www.thesportsdb.com/images/media/team/badge/xtwxyt1421431860.png",
+      "image": "psg.png",
       "type": "club"
     },
     {
       "name": "Manchester City",
       "rating": "5",
-      "image": "https://www.thesportsdb.com/images/media/team/badge/xtwxyt1422031421.png",
+      "image": "man-city.png",
       "type": "club"
     },
     {
       "name": "Real Madrid",
       "rating": "5",
-      "image": "https://www.thesportsdb.com/images/media/team/badge/xtwxyt1422031597.png",
+      "image": "real-madrid.png",
       "type": "club"
     },
     {
       "name": "Barcelona",
       "rating": "5",
-      "image": "https://www.thesportsdb.com/images/media/team/badge/xtwxyt1422031860.png",
+      "image": "barcelona.png",
       "type": "club"
     },
     {
       "name": "Bayern Munich",
       "rating": "5",
-      "image": "https://www.thesportsdb.com/images/media/team/badge/xtwxyt1422031970.png",
+      "image": "bayern-munich.png",
       "type": "club"
     },
     {
       "name": "Liverpool",
       "rating": "5",
-      "image": "https://www.thesportsdb.com/images/media/team/badge/xtwxyt1422032315.png",
+      "image": "liverpool.png",
       "type": "club"
     },
     {
       "name": "Chelsea",
       "rating": "5",
-      "image": "https://www.thesportsdb.com/images/media/team/badge/xtwxyt1422032685.png",
+      "image": "chelsea.png",
       "type": "club"
     },
     {
       "name": "Manchester United",
       "rating": "5",
-      "image": "https://www.thesportsdb.com/images/media/team/badge/xtwxyt1422032965.png",
+      "image": "man-united.png",
       "type": "club"
     },
     {
       "name": "Inter de Milán",
       "rating": "5",
-      "image": "https://www.thesportsdb.com/images/media/team/badge/xtwxyt1422033045.png",
+      "image": "inter.png",
       "type": "club"
     },
     {
       "name": "España",
       "rating": "5",
-      "image": "https://www.thesportsdb.com/images/media/team/badge/xtwxyt1422033135.png",
+      "image": "españa.png",
       "type": "country"
     },
     {
       "name": "Argentina",
       "rating": "5",
-      "image": "https://www.thesportsdb.com/images/media/team/badge/xtwxyt1422033225.png",
+      "image": "argentina.png",
       "type": "country"
     },
     {
       "name": "Brasil",
       "rating": "5",
-      "image": "https://www.thesportsdb.com/images/media/team/badge/xtwxyt1422033225.png",
+      "image": "brasil.png",
       "type": "country"
     },
     {
       "name": "Francia",
       "rating": "5",
-      "image": "https://www.thesportsdb.com/images/media/team/badge/xtwxyt1422033225.png",
+      "image": "francia.png",
       "type": "country"
     },
     {
       "name": "Bélgica",
       "rating": "5",
-      "image": "https://www.thesportsdb.com/images/media/team/badge/xtwxyt1422033225.png",
+      "image": "belgica.png",
       "type": "country"
     },
     {
-      "name": "Holanda",
+      "name": "Países Bajos",
       "rating": "5",
-      "image": "https://www.thesportsdb.com/images/media/team/badge/xtwxyt1422033225.png",
+      "image": "paises-bajos.png",
       "type": "country"
     },
     {
       "name": "Inglaterra",
       "rating": "5",
-      "image": "https://www.thesportsdb.com/images/media/team/badge/xtwxyt1422033225.png",
+      "image": "inglaterra.png",
       "type": "country"
     }
   ]
