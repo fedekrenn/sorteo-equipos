@@ -1,5 +1,11 @@
+import SelecPlayers from '../components/SelectPlayers'
+import { getPairTeamData } from '../utils/getTeamData'
+
 export default function Pair () {
   return (
-    <h1>2 vs 2</h1>
+    <main>
+      <h1>2 vs 2</h1>
+      <SelecPlayers matchFunction={getPairTeamData} />
+    </main>
   )
 }
