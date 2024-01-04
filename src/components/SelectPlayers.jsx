@@ -2,10 +2,10 @@ import { useState } from 'react'
 import Select from './Select'
 import Input from './Input'
 
-// eslint-disable-next-line react/prop-types
 export default function SelectPlayers ({ matchFunction, setMatches }) {
   const [playersCount, setPlayersCount] = useState(0)
   const [players, setPlayers] = useState([])
+  const [countries, setCountries] = useState(false)
 
   const handlePlayerChange = (index, name) => {
     const newPlayers = [...players]
@@ -15,10 +15,12 @@ export default function SelectPlayers ({ matchFunction, setMatches }) {
 
   const handleSubmit = (event) => {
     event.preventDefault()
+
     if (playersCount === 0 && players.length === 0) {
       alert('Completa correctamente los campos')
     }
-    const newMatches = matchFunction(players)
+
+    const newMatches = matchFunction(players, countries)
     setMatches(newMatches)
   }
 
@@ -44,6 +46,15 @@ export default function SelectPlayers ({ matchFunction, setMatches }) {
             />
           )
         })}
+        <label>
+          <span>Jugar con países</span>
+          <input
+            type='checkbox'
+            className='form-checkbox'
+            checked={countries}
+            onChange={() => setCountries(!countries)}
+          />
+        </label>
         <button type='reset' className='btn' onClick={handleReset}>Limpiar</button>
         <button type='submit' className='btn'>Enviar</button>
       </form>
