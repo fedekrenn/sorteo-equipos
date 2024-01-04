@@ -16,7 +16,7 @@ body {
 
 main {
   max-width: 978px;
-  min-height: 100vh;
+  min-height: calc(100vh - 7rem);
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -31,12 +31,12 @@ a {
 
 ul li {
   list-style: none;
+  width: 100%;
 }
 
 .btn {
-  display: inline-block;
-  padding: 0.5rem 1rem;
-  border-radius: 0.5rem;
+  padding: 5px 10px;
+  border-radius: 8px;
   background-color: #f3ecec;
   color: #0d031a;
   font-weight: bold;

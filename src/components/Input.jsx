@@ -1,6 +1,5 @@
 import { useState, useId } from 'react'
 
-// eslint-disable-next-line react/prop-types
 export default function Inputs ({ index, handlePlayerChange }) {
   const [name, setName] = useState('')
 
