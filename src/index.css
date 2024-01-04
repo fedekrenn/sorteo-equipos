@@ -12,14 +12,16 @@ body {
   font-family: "Roboto", sans-serif;
   background-color: #0d031a;
   color: #f3ecec;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  min-height: 100vh;
 }
 
 main {
   max-width: 978px;
+  min-height: 100vh;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 a {

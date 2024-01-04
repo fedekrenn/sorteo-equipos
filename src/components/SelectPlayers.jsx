@@ -3,10 +3,9 @@ import Select from './Select'
 import Input from './Input'
 
 // eslint-disable-next-line react/prop-types
-export default function SelectPlayers ({ matchFunction }) {
+export default function SelectPlayers ({ matchFunction, setMatches }) {
   const [playersCount, setPlayersCount] = useState(0)
   const [players, setPlayers] = useState([])
-  const [matches, setMatches] = useState([])
 
   const handlePlayerChange = (index, name) => {
     const newPlayers = [...players]
@@ -29,7 +28,7 @@ export default function SelectPlayers ({ matchFunction }) {
   }
 
   return (
-    <>
+    <section>
       <Select
         setPlayersCount={setPlayersCount}
         playersCount={playersCount}
@@ -48,7 +47,6 @@ export default function SelectPlayers ({ matchFunction }) {
         <button type='reset' className='btn' onClick={handleReset}>Limpiar</button>
         <button type='submit' className='btn'>Enviar</button>
       </form>
-      {JSON.stringify(matches)}
-    </>
+    </section>
   )
 }
