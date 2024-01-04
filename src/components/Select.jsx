@@ -1,5 +1,9 @@
+import { useId } from 'react'
+
 // eslint-disable-next-line react/prop-types
 export default function Select ({ setPlayersCount, playersCount, handleReset }) {
+  const selectID = useId()
+
   const handleSetPlayersCount = (event) => {
     const value = event.target.value
     if (value === 'default') {
@@ -13,6 +17,7 @@ export default function Select ({ setPlayersCount, playersCount, handleReset }) 
       <span>Cantidad de jugadores:</span>
       <select
         value={playersCount}
+        id={selectID}
         onChange={handleSetPlayersCount}
         className='form-select mt-1 block w-auto text-black'
       >

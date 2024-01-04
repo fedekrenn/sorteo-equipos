@@ -1,8 +1,10 @@
-import { useState } from 'react'
+import { useState, useId } from 'react'
 
 // eslint-disable-next-line react/prop-types
 export default function Inputs ({ index, handlePlayerChange }) {
   const [name, setName] = useState('')
+
+  const inputID = useId()
 
   const handleChange = (event) => {
     const value = event.target.value
@@ -17,6 +19,7 @@ export default function Inputs ({ index, handlePlayerChange }) {
         required
         type='text'
         className='form-input mt-1 block w-full text-black'
+        id={inputID}
         value={name}
         onChange={handleChange}
       />
