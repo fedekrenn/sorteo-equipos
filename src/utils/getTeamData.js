@@ -17,10 +17,11 @@ export const getSimpleTeamData = (listOfPlayers, countries) => {
     teams = teamsData.data.filter(team => team.type === 'club')
   }
 
-  const sorted = randomSort(teams)
+  const sortedPlayers = randomSort(listOfPlayers)
+  const sortedSquads = randomSort(teams)
 
-  return listOfPlayers.map((player, i) => {
-    const { name, image } = sorted[i]
+  return sortedPlayers.map((player, i) => {
+    const { name, image } = sortedSquads[i]
     return {
       players: player,
       squad: {
