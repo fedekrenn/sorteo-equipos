@@ -1,6 +1,6 @@
 import { useState } from 'react'
-import SelecPlayers from '../components/SelectPlayers'
-import { getPairTeamData } from '../utils/getTeamData'
+import SelecPlayers from '@components/SelectPlayers'
+import { getPairTeamData } from '@utils/getTeamData'
 
 export default function Pair () {
   const [matches, setMatches] = useState([])

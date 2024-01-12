@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { getTwoRandomTeams } from '../utils/getTeamData'
+import { getTwoRandomTeams } from '@utils/getTeamData'
 
 export default function RandomTeams () {
   const [teams, setTeams] = useState([])
