@@ -27,6 +27,7 @@ export default function SelectPlayers ({ matchFunction, setMatches }) {
   const handleReset = () => {
     setPlayersCount(0)
     setPlayers([])
+    setMatches([])
   }
 
   return (
