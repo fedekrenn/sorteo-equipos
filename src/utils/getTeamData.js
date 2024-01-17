@@ -57,10 +57,7 @@ export const getPairTeamData = (listOfPlayers, countries) => {
     if (teamData.length === 1) {
       return {
         players: teamData,
-        squad: {
-          name: 'Libre',
-          image: ''
-        }
+        squad: null
       }
     }
     const { name, image } = sortedSquads[i]
