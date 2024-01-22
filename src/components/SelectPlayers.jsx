@@ -20,8 +20,26 @@ export default function SelectPlayers ({ matchFunction, setMatches }) {
       alert('Completa correctamente los campos')
     }
 
-    const newMatches = matchFunction(players, countries)
-    setMatches(newMatches)
+    const areNamesUnique = players.every((player, index) => {
+      return players.indexOf(player) === index
+    })
+
+    const areNamesNotEmpty = players.every(player => player.trim() !== '')
+
+    if (!areNamesUnique) {
+      alert('No puedes repetir nombres')
+      return
+    }
+
+    if (!areNamesNotEmpty) {
+      alert('No ingresaste todos los nombres')
+      return
+    }
+
+    const playersWithTrimmedNames = players.map(player => player.trim())
+
+    const generatedMatches = matchFunction(playersWithTrimmedNames, countries)
+    setMatches(generatedMatches)
   }
 
   const handleReset = () => {
