@@ -1,6 +1,5 @@
 import { useId } from 'react'
 
-// eslint-disable-next-line react/prop-types
 export default function Select ({ setPlayersCount, playersCount, handleReset }) {
   const selectID = useId()
 
