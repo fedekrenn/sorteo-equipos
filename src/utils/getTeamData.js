@@ -8,10 +8,10 @@ function randomSort (array) {
   return array
 }
 
-export const getSimpleTeamData = (listOfPlayers, countries) => {
+export const getSimpleTeamData = (listOfPlayers, includeCountries) => {
   let teams
 
-  if (countries) {
+  if (includeCountries) {
     teams = teamsData.data.filter(team => team.type === 'country')
   } else {
     teams = teamsData.data.filter(team => team.type === 'club')
@@ -32,10 +32,10 @@ export const getSimpleTeamData = (listOfPlayers, countries) => {
   })
 }
 
-export const getPairTeamData = (listOfPlayers, countries) => {
+export const getPairTeamData = (listOfPlayers, includeCountries) => {
   let teams
 
-  if (countries) {
+  if (includeCountries) {
     teams = teamsData.data.filter(team => team.type === 'country')
   } else {
     teams = teamsData.data.filter(team => team.type === 'club')
@@ -72,10 +72,10 @@ export const getPairTeamData = (listOfPlayers, countries) => {
   })
 }
 
-export const getTwoRandomTeams = (countries) => {
+export const getTwoRandomTeams = (includeCountries) => {
   let teams
 
-  if (countries) {
+  if (includeCountries) {
     teams = teamsData.data.filter(team => team.type === 'country')
   } else {
     teams = teamsData.data.filter(team => team.type === 'club')

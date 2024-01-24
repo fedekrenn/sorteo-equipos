@@ -5,7 +5,7 @@ import Input from './Input'
 export default function SelectPlayers ({ matchFunction, setMatches }) {
   const [playersCount, setPlayersCount] = useState(0)
   const [players, setPlayers] = useState([])
-  const [countries, setCountries] = useState(false)
+  const [includeCountries, setIncludeCountries] = useState(false)
 
   useEffect(() => {
     const handleReduce = quantity => {
@@ -52,7 +52,7 @@ export default function SelectPlayers ({ matchFunction, setMatches }) {
 
     const playersWithTrimmedNames = players.map(player => player.trim())
 
-    const generatedMatches = matchFunction(playersWithTrimmedNames, countries)
+    const generatedMatches = matchFunction(playersWithTrimmedNames, includeCountries)
     setMatches(generatedMatches)
   }
 
@@ -84,8 +84,8 @@ export default function SelectPlayers ({ matchFunction, setMatches }) {
           <input
             type='checkbox'
             className='form-checkbox'
-            checked={countries}
-            onChange={() => setCountries(!countries)}
+            checked={includeCountries}
+            onChange={() => setIncludeCountries(!includeCountries)}
           />
         </label>
         <button type='reset' className='btn' onClick={handleReset}>Limpiar</button>
