@@ -24,10 +24,10 @@ export default function RandomTeams () {
         />
       </label>
       <button onClick={matchTeams} className='btn'>Elegir</button>
-      <ul className='flex justify-center items-end mt-14 mb-14 gap-10 min-h-[225px]'>
+      <ul className='flex flex-wrap justify-center items-end mt-14 mb-14 gap-10 min-h-[225px]'>
         {teams.map(({ name, image }) => (
           <li key={name} className='flex flex-col justify-between items-center w-52'>
-            <img src={`/team-logos/${image}`} alt={name} className='w-32 flex-1' />
+            <img src={`/team-logos/${image}`} alt={name} className='w-24 sm:w-44 flex-1' />
             <span className='w-full text-center mt-4 items-end'>{name}</span>
           </li>
         ))}

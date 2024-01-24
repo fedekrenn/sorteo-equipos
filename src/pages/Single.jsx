@@ -10,11 +10,11 @@ export default function SinglePage () {
       <h1>1 vs 1</h1>
       <SelecPlayers matchFunction={getSimpleTeamData} setMatches={setMatches} />
       <section className='w-full'>
-        <ul className='flex justify-between w-full'>
+        <ul className='flex flex-wrap justify-center m-10 gap-10 md:flex-nowrap '>
           {matches.map(({ players, squad }) => (
-            <li key={players} className='list-none'>
-              <p>{players}</p>
-              <img src={`/team-logos/${squad.image}`} alt={squad.name} className='w-20' />
+            <li key={players} className='flex flex-col items-center justify-end max-w-[200px] w-auto'>
+              <img src={`/team-logos/${squad.image}`} alt={squad.name} className='w-24 sm:w-44' />
+              <p className='mt-4 text-lg'>{players}</p>
             </li>
           ))}
         </ul>
