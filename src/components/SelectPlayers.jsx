@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Select from './Select'
 import Input from './Input'
 
@@ -6,6 +6,20 @@ export default function SelectPlayers ({ matchFunction, setMatches }) {
   const [playersCount, setPlayersCount] = useState(0)
   const [players, setPlayers] = useState([])
   const [countries, setCountries] = useState(false)
+
+  useEffect(() => {
+    const handleReduce = quantity => {
+      const newPlayers = [...players]
+      newPlayers.splice(-quantity)
+      setPlayers(newPlayers)
+    }
+
+    if (playersCount < players.length) {
+      const difference = players.length - playersCount
+      handleReduce(difference)
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [playersCount])
 
   const handlePlayerChange = (index, name) => {
     const newPlayers = [...players]
