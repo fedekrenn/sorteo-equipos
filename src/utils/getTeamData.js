@@ -1,5 +1,7 @@
 import teamsData from './teams.json'
 
+const countriesQuantity = teamsData.data.filter(team => team.type === 'country').length
+
 function randomSort (array) {
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -12,6 +14,9 @@ export const getSimpleTeamData = (listOfPlayers, includeCountries) => {
   let teams
 
   if (includeCountries) {
+    if (listOfPlayers.length > countriesQuantity) {
+      throw new Error('No puedes seleccionar más de 7 jugadores si incluyes selecciones')
+    }
     teams = teamsData.data.filter(team => team.type === 'country')
   } else {
     teams = teamsData.data.filter(team => team.type === 'club')

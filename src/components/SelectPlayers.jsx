@@ -52,8 +52,12 @@ export default function SelectPlayers ({ matchFunction, setMatches }) {
 
     const playersWithTrimmedNames = players.map(player => player.trim())
 
-    const generatedMatches = matchFunction(playersWithTrimmedNames, includeCountries)
-    setMatches(generatedMatches)
+    try {
+      const generatedMatches = matchFunction(playersWithTrimmedNames, includeCountries)
+      setMatches(generatedMatches)
+    } catch (error) {
+      alert(error)
+    }
   }
 
   const handleReset = () => {
