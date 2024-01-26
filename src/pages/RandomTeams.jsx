@@ -18,6 +18,7 @@ export default function RandomTeams () {
         <span>Jugar con países</span>
         <input
           type='checkbox'
+          id='includeCountriesRandom'
           className='form-checkbox'
           checked={countries}
           onChange={() => setCountries(!countries)}
