@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { Toaster, toast } from 'sonner'
 import Select from './Select'
 import Input from './Input'
 
@@ -31,7 +32,7 @@ export default function SelectPlayers ({ matchFunction, setMatches }) {
     event.preventDefault()
 
     if (playersCount === 0 && players.length === 0) {
-      alert('Completa correctamente los campos')
+      toast.info('Completa correctamente los campos')
     }
 
     const areNamesUnique = players.every((player, index) => {
@@ -41,12 +42,12 @@ export default function SelectPlayers ({ matchFunction, setMatches }) {
     const areNamesNotEmpty = players.every(player => player.trim() !== '')
 
     if (!areNamesUnique) {
-      alert('No puedes repetir nombres')
+      toast.info('No puedes repetir nombres')
       return
     }
 
     if (!areNamesNotEmpty) {
-      alert('No ingresaste todos los nombres')
+      toast.info('No ingresaste todos los nombres')
       return
     }
 
@@ -56,7 +57,7 @@ export default function SelectPlayers ({ matchFunction, setMatches }) {
       const generatedMatches = matchFunction(playersWithTrimmedNames, includeCountries)
       setMatches(generatedMatches)
     } catch (error) {
-      alert(error)
+      toast.error(error.message)
     }
   }
 
@@ -68,6 +69,7 @@ export default function SelectPlayers ({ matchFunction, setMatches }) {
 
   return (
     <section>
+      <Toaster />
       <Select
         setPlayersCount={setPlayersCount}
         playersCount={playersCount}
