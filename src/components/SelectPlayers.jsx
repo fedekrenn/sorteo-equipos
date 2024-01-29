@@ -24,7 +24,7 @@ export default function SelectPlayers ({ matchFunction, setMatches }) {
 
   const handlePlayerChange = (index, name) => {
     const newPlayers = [...players]
-    newPlayers[index] = name
+    newPlayers[index] = name.toLowerCase()
     setPlayers(newPlayers)
   }
 

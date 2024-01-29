@@ -27,8 +27,9 @@ export const getSimpleTeamData = (listOfPlayers, includeCountries) => {
 
   return sortedPlayers.map((player, i) => {
     const { name, image } = sortedSquads[i]
+    const capitalizedName = player.replace(/^\w/, (c) => c.toUpperCase())
     return {
-      players: player,
+      players: capitalizedName,
       squad: {
         name,
         image
@@ -50,10 +51,12 @@ export const getPairTeamData = (listOfPlayers, includeCountries) => {
   const sortedSquads = randomSort(teams)
 
   const pairs = sortedPlayers.reduce((acc, player, i) => {
+    const capitalizedName = player.replace(/^\w/, (c) => c.toUpperCase())
+
     if (i % 2 === 0) {
-      acc.push([player])
+      acc.push([capitalizedName])
     } else {
-      acc[acc.length - 1].push(player)
+      acc[acc.length - 1].push(capitalizedName)
     }
     return acc
   }, [])
