@@ -37,20 +37,26 @@
       "type": "club"
     },
     {
-      "name": "Chelsea",
+      "name": "Atlético de Madrid",
       "rating": "5",
-      "image": "chelsea.png",
+      "image": "atletico-madrid.png",
+      "type": "club"
+    },
+    {
+      "name": "Arsenal",
+      "rating": "5",
+      "image": "arsenal.png",
       "type": "club"
     },
     {
       "name": "Manchester United",
-      "rating": "5",
+      "rating": "4.5",
       "image": "man-united.png",
       "type": "club"
     },
     {
       "name": "Inter de Milán",
-      "rating": "5",
+      "rating": "4.5",
       "image": "inter.png",
       "type": "club"
     },
@@ -79,9 +85,15 @@
       "type": "country"
     },
     {
-      "name": "Bélgica",
+      "name": "Italia",
       "rating": "5",
-      "image": "belgica.png",
+      "image": "italia.png",
+      "type": "country"
+    },
+    {
+      "name": "Portugal",
+      "rating": "5",
+      "image": "portugal.png",
       "type": "country"
     },
     {

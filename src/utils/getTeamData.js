@@ -15,7 +15,7 @@ export const getSimpleTeamData = (listOfPlayers, includeCountries) => {
 
   if (includeCountries) {
     if (listOfPlayers.length > countriesQuantity) {
-      throw new Error('No puedes seleccionar más de 7 jugadores si incluyes selecciones')
+      throw new Error(`No puedes seleccionar más de ${countriesQuantity} jugadores si incluyes selecciones`)
     }
     teams = teamsData.data.filter(team => team.type === 'country')
   } else {
