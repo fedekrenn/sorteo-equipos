@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { getPairTeamData } from '@utils/getTeamData'
+import { getPairTeamData } from '@services/getTeamData'
 import SelecPlayers from '@components/SelectPlayers'
 
 export default function Pair () {

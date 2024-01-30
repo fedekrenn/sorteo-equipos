@@ -1,4 +1,4 @@
-import teamsData from './teams.json'
+import teamsData from '../data/teams.json'
 
 const countriesQuantity = teamsData.data.filter(team => team.type === 'country').length
 

@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import SelecPlayers from '@components/SelectPlayers'
-import { getSimpleTeamData } from '@utils/getTeamData'
+import { getSimpleTeamData } from '@services/getTeamData'
 
 export default function SinglePage () {
   const [matches, setMatches] = useState([])
