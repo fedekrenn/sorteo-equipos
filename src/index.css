@@ -17,11 +17,11 @@ body {
 
 main {
   max-width: 978px;
-  min-height: calc(100vh - 6rem - 61px);
+  min-height: calc(100dvh - 6rem - 61px);
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-evenly;
 }
 
 a {

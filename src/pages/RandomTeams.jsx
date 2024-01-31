@@ -30,7 +30,7 @@ export default function RandomTeams () {
       <ul className='flex flex-wrap justify-center items-end mt-10 mb-10 gap-10'>
         {teams.map(({ name, image }) => (
           <li key={name} className='flex flex-col justify-between items-center'>
-            <img src={`/team-logos/${image}`} alt={name} className='w-24 h-24 object-contain sm:w-[200px] sm:h-[200px]' />
+            <img src={`/team-logos/${image}`} alt={name} className='w-32 h-32 object-contain sm:w-[200px] sm:h-[200px]' />
             <span className='w-full text-center mt-4 items-end'>{name}</span>
           </li>
         ))}
