@@ -75,7 +75,7 @@ export default function SelectPlayers ({ matchFunction, setMatches }) {
         playersCount={playersCount}
         handleReset={handleReset}
       />
-      <form action='' onSubmit={handleSubmit}>
+      <form action='' onSubmit={handleSubmit} className='flex flex-col'>
         {Array.from({ length: playersCount }).map((_, index) => {
           return (
             <Input
@@ -95,8 +95,10 @@ export default function SelectPlayers ({ matchFunction, setMatches }) {
             onChange={() => setIncludeCountries(!includeCountries)}
           />
         </label>
-        <button type='reset' className='btn' onClick={handleReset}>Limpiar</button>
-        <button type='submit' className='btn'>Enviar</button>
+        <div className='flex gap-2'>
+          <button type='reset' className='btn w-fit' onClick={handleReset}>Limpiar</button>
+          <button type='submit' className='btn w-fit'>Enviar</button>
+        </div>
       </form>
     </section>
   )

@@ -12,15 +12,15 @@ body {
   font-family: "Roboto", sans-serif;
   background-color: #0d031a;
   color: #f3ecec;
+  padding: 0 20px;
 }
 
 main {
   max-width: 978px;
-  min-height: calc(100vh - 7rem);
+  min-height: calc(100vh - 6rem);
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
 }
 

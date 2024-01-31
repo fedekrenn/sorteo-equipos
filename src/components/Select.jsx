@@ -12,7 +12,7 @@ export default function Select ({ setPlayersCount, playersCount, handleReset }) 
   }
 
   return (
-    <label className='block'>
+    <label>
       <span>Cantidad de jugadores:</span>
       <select
         value={playersCount}
