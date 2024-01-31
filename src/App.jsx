@@ -1,5 +1,6 @@
 import { Routes, Route } from 'react-router-dom'
 import Header from '@components/Header'
+import Footer from '@components/Footer'
 import Index from '@pages/Index'
 import Pair from '@pages/Pair'
 import Single from '@pages/Single'
@@ -17,6 +18,8 @@ function App () {
         <Route path='/random-teams' element={<RandomTeams />} />
         <Route path='*' element={<NotFound />} />
       </Routes>
+      <hr className='max-w-[500px] mx-auto' />
+      <Footer />
     </>
   )
 }
