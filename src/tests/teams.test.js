@@ -1,5 +1,5 @@
 import { describe, test, expect } from 'vitest'
-import { getSimpleTeamData, getPairTeamData, getTwoRandomTeams } from '@utils/getTeamData.js'
+import { getSimpleTeamData, getPairTeamData, getTwoRandomTeams } from '@services/getTeamData.js'
 
 const array = ['Fede', 'Nico', 'Mauro', 'Luciano', 'David']
 
