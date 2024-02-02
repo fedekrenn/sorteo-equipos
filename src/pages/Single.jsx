@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import SelecPlayers from '@components/SelectPlayers'
+import Title from '@components/Title'
 import { getSimpleTeamData } from '@services/getTeamData'
 
 export default function SinglePage () {
@@ -7,10 +7,7 @@ export default function SinglePage () {
 
   return (
     <main>
-      <section className='flex flex-col max-w-[500px] mx-auto w-full'>
-        <h2 className='text-3xl text-center font-bold'>1 vs 1</h2>
-        <SelecPlayers matchFunction={getSimpleTeamData} setMatches={setMatches} />
-      </section>
+      <Title text='1 vs 1' matchFunction={getSimpleTeamData} setMatches={setMatches} />
       <section className='w-full'>
         <ul className='flex flex-wrap justify-center items-end mt-10 mb-10 gap-10'>
           {matches.map(({ players, squad }) => (
