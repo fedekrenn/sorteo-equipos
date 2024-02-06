@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Toaster, toast } from 'sonner'
+import { Label, Checkbox } from 'flowbite-react'
 import Select from './Select'
 import Input from './Input'
 
@@ -75,7 +76,7 @@ export default function SelectPlayers ({ matchFunction, setMatches }) {
         playersCount={playersCount}
         handleReset={handleReset}
       />
-      <form action='' onSubmit={handleSubmit} className='flex flex-col'>
+      <form action='' onSubmit={handleSubmit} className='flex flex-col gap-4 my-3'>
         {Array.from({ length: playersCount }).map((_, index) => {
           return (
             <Input
@@ -85,16 +86,14 @@ export default function SelectPlayers ({ matchFunction, setMatches }) {
             />
           )
         })}
-        <label>
-          <span>Jugar con países</span>
-          <input
-            type='checkbox'
+        <div className='flex items-center gap-2 my-3'>
+          <Checkbox
             id='includeCountries'
-            className='form-checkbox'
             checked={includeCountries}
             onChange={() => setIncludeCountries(!includeCountries)}
           />
-        </label>
+          <Label htmlFor='includeCountries' value='¿Incluir países? (Opcional)' className='text-slate-100' />
+        </div>
         <div className='flex gap-2'>
           <button type='reset' className='btn w-fit' onClick={handleReset}>Limpiar</button>
           <button type='submit' className='btn w-fit'>Enviar</button>

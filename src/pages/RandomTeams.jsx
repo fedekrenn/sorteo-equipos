@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { getTwoRandomTeams } from '@services/getTeamData'
+import { Label, Checkbox } from 'flowbite-react'
 
 export default function RandomTeams () {
   const [teams, setTeams] = useState([])
@@ -15,16 +16,14 @@ export default function RandomTeams () {
       <section className='flex flex-col max-w-[500px] mx-auto w-full'>
         <h2 className='text-3xl text-center font-bold'>Partido aleatorio</h2>
         <p>Haz click para seleccionar equipos</p>
-        <label>
-          <span>Jugar con países</span>
-          <input
-            type='checkbox'
+        <div className='flex items-center gap-2 my-5'>
+          <Checkbox
             id='includeCountriesRandom'
-            className='form-checkbox'
             checked={countries}
             onChange={() => setCountries(!countries)}
           />
-        </label>
+          <Label htmlFor='includeCountriesRandom' value='¿Incluir países?' className='text-slate-100' />
+        </div>
         <button onClick={matchTeams} className='btn w-fit'>Elegir</button>
       </section>
       <ul className='flex flex-wrap justify-center items-end mt-10 mb-10 gap-10'>

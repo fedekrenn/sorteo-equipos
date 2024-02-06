@@ -1,4 +1,5 @@
 import { useState, useId } from 'react'
+import { Label, TextInput } from 'flowbite-react'
 
 export default function Inputs ({ index, handlePlayerChange }) {
   const [name, setName] = useState('')
@@ -12,16 +13,14 @@ export default function Inputs ({ index, handlePlayerChange }) {
   }
 
   return (
-    <label className='block'>
-      <span>Nombre {index + 1}:</span>
-      <input
+    <div>
+      <Label htmlFor={inputID} value={`Nombre ${index + 1}:`} className='text-slate-100' />
+      <TextInput
         required
-        type='text'
-        className='form-input mt-1 block w-full text-black'
         id={inputID}
         value={name}
         onChange={handleChange}
       />
-    </label>
+    </div>
   )
 }

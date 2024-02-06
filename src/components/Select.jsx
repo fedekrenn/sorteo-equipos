@@ -1,6 +1,7 @@
 import { useId } from 'react'
+import { Label, Select } from 'flowbite-react'
 
-export default function Select ({ setPlayersCount, playersCount, handleReset }) {
+export default function MySelect ({ setPlayersCount, playersCount, handleReset }) {
   const selectID = useId()
 
   const handleSetPlayersCount = (event) => {
@@ -12,9 +13,9 @@ export default function Select ({ setPlayersCount, playersCount, handleReset }) 
   }
 
   return (
-    <label>
-      <span>Cantidad de jugadores:</span>
-      <select
+    <>
+      <Label htmlFor={selectID} value='Cantidad de jugadores:' className='text-slate-100' />
+      <Select
         value={playersCount}
         id={selectID}
         onChange={handleSetPlayersCount}
@@ -30,7 +31,7 @@ export default function Select ({ setPlayersCount, playersCount, handleReset }) 
         <option value='8'>8</option>
         <option value='9'>9</option>
         <option value='10'>10</option>
-      </select>
-    </label>
+      </Select>
+    </>
   )
 }
