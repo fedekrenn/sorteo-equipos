@@ -86,7 +86,7 @@ export default function SelectPlayers ({ matchFunction, setMatches }) {
             />
           )
         })}
-        <div className='flex items-center gap-2 my-3'>
+        <div className='flex items-center gap-2 my-3 mx-auto'>
           <Checkbox
             id='includeCountries'
             checked={includeCountries}
@@ -94,7 +94,7 @@ export default function SelectPlayers ({ matchFunction, setMatches }) {
           />
           <Label htmlFor='includeCountries' value='¿Incluir países? (Opcional)' className='text-slate-100' />
         </div>
-        <div className='flex gap-2'>
+        <div className='flex gap-2 mx-auto'>
           <button type='reset' className='btn w-fit' onClick={handleReset}>Limpiar</button>
           <button type='submit' className='btn w-fit'>Enviar</button>
         </div>

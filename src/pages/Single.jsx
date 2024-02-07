@@ -8,8 +8,8 @@ export default function SinglePage () {
   return (
     <main>
       <Title text='1 vs 1' matchFunction={getSimpleTeamData} setMatches={setMatches} />
-      <section className='w-full'>
-        <ul className='flex flex-wrap justify-center items-end mt-10 mb-10 gap-10'>
+      <section className={`flex items-center justify-center ${matches.length > 0 ? 'min-h-[400px]' : ''}`}>
+        <ul className='flex flex-wrap justify-center items-end gap-10'>
           {matches.map(({ players, squad }) => (
             <li key={players} className='flex flex-col justify-between items-center'>
               <img
