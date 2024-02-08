@@ -20,6 +20,7 @@ export default function Inputs ({ index, handlePlayerChange }) {
         id={inputID}
         value={name}
         onChange={handleChange}
+        autoComplete='off'
       />
     </div>
   )

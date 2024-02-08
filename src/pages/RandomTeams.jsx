@@ -23,7 +23,7 @@ export default function RandomTeams () {
           />
           <Label htmlFor='includeCountriesRandom' value='¿Incluir países?' className='text-slate-100' />
         </div>
-        <button onClick={matchTeams} className='btn w-fit mx-auto'>Elegir</button>
+        <button onClick={matchTeams} className='btn w-fit mx-auto'>Sortear</button>
       </section>
       <section className={`flex items-center justify-center ${teams.length > 0 ? 'min-h-[400px]' : ''}`}>
         <ul className='flex flex-wrap justify-center items-end gap-10'>
