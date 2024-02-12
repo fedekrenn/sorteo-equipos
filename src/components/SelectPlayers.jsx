@@ -95,8 +95,8 @@ export default function SelectPlayers ({ matchFunction, setMatches }) {
           <Label htmlFor='includeCountries' value='¿Incluir países? (Opcional)' className='text-slate-100' />
         </div>
         <div className='flex gap-2 mx-auto'>
-          <button type='reset' className='btn w-fit' onClick={handleReset}>Limpiar</button>
           <button type='submit' className='btn w-fit'>Sortear</button>
+          <button type='reset' className='btn reset w-fit' onClick={handleReset}>Limpiar</button>
         </div>
       </form>
     </section>

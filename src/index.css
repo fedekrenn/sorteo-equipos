@@ -47,3 +47,19 @@ ul li {
 .btn:hover {
   background-color: #c5c5c5;
 }
+
+.reset {
+  background-color: transparent;
+  color: #f3ecec;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  padding: 5px 10px;
+  border-radius: 8px;
+  margin: 0 10px;
+  border: 2px solid #f3ecec;
+}
+
+.reset:hover {
+  background-color: #f3ecec1f;
+}
