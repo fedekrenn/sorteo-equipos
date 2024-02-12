@@ -10,6 +10,35 @@ Los equipos que se sortean son los populares que se suelen utilizar en el juego 
 
 ![screen](https://github.com/fedekrenn/sorteo-equipos/assets/90353038/6a54e855-28b1-4340-a808-9b8884b6e96e)
 
+## Instalación
+
+### Clonar el repositorio
+
+```bash
+git clone https://github.com/fedekrenn/sorteo-equipos.git
+```
+
+### Instalar dependencias
+
+```bash
+pnpm install
+```
+
+### Iniciar el servidor
+
+```bash
+pnpm start
+```
+
+## Requisitos
+
+- Node.js 16x o superior
+- pnpm
+
+## Quieres contribuir al proyecto?
+
+Visita el archivo [CONTRIBUTING.md](CONTRIBUTING.md) para obtener más información sobre cómo contribuir al proyecto.
+
 ## Uso
 
 ### 1vs1
