@@ -33,7 +33,11 @@ export default function SelectPlayers ({ matchFunction, setMatches }) {
     event.preventDefault()
 
     if (playersCount === 0 && players.length === 0) {
-      toast.info('Completa correctamente los campos')
+      return toast.info('Completa correctamente los campos')
+    }
+
+    if (players.some(player => player.length < 3)) {
+      return toast.info('Los nombres deben tener al menos 3 caracteres')
     }
 
     const areNamesUnique = players.every((player, index) => {
