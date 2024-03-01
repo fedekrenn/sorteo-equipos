@@ -1,19 +1,34 @@
 import { useState } from 'react'
 import { getTwoRandomTeams } from '@services/getTeamData'
 import { Label, Checkbox } from 'flowbite-react'
+import { Toaster, toast } from 'sonner'
+import confetti from 'canvas-confetti'
 
 export default function RandomTeams () {
   const [teams, setTeams] = useState([])
   const [countries, setCountries] = useState(false)
 
   const matchTeams = () => {
-    const teams = getTwoRandomTeams(countries)
-    setTeams(teams)
+    try {
+      const teams = getTwoRandomTeams(countries)
+      setTeams(teams)
+      confetti({
+        particleCount: 100,
+        spread: 70,
+        origin: { y: 0.6 }
+      })
+      setTimeout(() => {
+        window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' })
+      }, 150)
+    } catch (error) {
+      toast.error(error.message)
+    }
   }
 
   return (
     <main>
       <section className='flex flex-col max-w-[500px] mx-auto w-full'>
+        <Toaster />
         <h2 className='text-3xl text-center font-bold mb-3'>Partido aleatorio</h2>
         <div className='flex items-center gap-2 my-5 mx-auto'>
           <Checkbox

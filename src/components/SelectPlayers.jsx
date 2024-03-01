@@ -67,7 +67,9 @@ export default function SelectPlayers ({ matchFunction, setMatches }) {
         spread: 70,
         origin: { y: 0.6 }
       })
-      window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' })
+      setTimeout(() => {
+        window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' })
+      }, 150)
     } catch (error) {
       toast.error(error.message)
     }
