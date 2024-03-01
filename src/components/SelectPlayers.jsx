@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Toaster, toast } from 'sonner'
 import { Label, Checkbox } from 'flowbite-react'
+import confetti from 'canvas-confetti'
 import Select from './Select'
 import Input from './Input'
 
@@ -61,6 +62,11 @@ export default function SelectPlayers ({ matchFunction, setMatches }) {
     try {
       const generatedMatches = matchFunction(playersWithTrimmedNames, includeCountries)
       setMatches(generatedMatches)
+      confetti({
+        particleCount: 100,
+        spread: 70,
+        origin: { y: 0.6 }
+      })
     } catch (error) {
       toast.error(error.message)
     }

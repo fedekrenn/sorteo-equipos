@@ -5,6 +5,12 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  canvas-confetti:
+    specifier: 1.9.2
+    version: 1.9.2
+  flowbite:
+    specifier: 2.3.0
+    version: 2.3.0
   flowbite-react:
     specifier: 0.7.2
     version: 0.7.2(@types/react@18.2.43)(esbuild@0.19.11)(next@13.5.6)(react-dom@18.2.0)(react@18.2.0)(tailwindcss@3.4.0)
@@ -1738,6 +1744,10 @@ packages:
   /caniuse-lite@1.0.30001572:
     resolution: {integrity: sha512-1Pbh5FLmn5y4+QhNyJE9j3/7dK44dGB83/ZMjv/qJk86TvDbjk0LosiZo0i0WB0Vx607qMX9jYrn1VLHCkN4rw==}
 
+  /canvas-confetti@1.9.2:
+    resolution: {integrity: sha512-6Xi7aHHzKwxZsem4mCKoqP6YwUG3HamaHHAlz1hTNQPCqXhARFpSXnkC9TWlahHY5CG6hSL5XexNjxK8irVErg==}
+    dev: false
+
   /ccount@2.0.1:
     resolution: {integrity: sha512-eyrF0jiFpY+3drT6383f1qhkbGsLSifNAjA61IUjZjmLCWjItY6LB9ft9YhoDgwfmclB2zhu51Lc7+95b8NRAg==}
     dev: false
@@ -2721,7 +2731,7 @@ packages:
     dependencies:
       '@floating-ui/react': 0.26.9(react-dom@18.2.0)(react@18.2.0)
       contentlayer: 0.3.4(esbuild@0.19.11)
-      flowbite: 2.2.1
+      flowbite: 2.3.0
       markdown-toc: 1.2.0
       next-contentlayer: 0.3.4(contentlayer@0.3.4)(esbuild@0.19.11)(next@13.5.6)(react-dom@18.2.0)(react@18.2.0)
       react: 18.2.0
@@ -2741,8 +2751,8 @@ packages:
       - supports-color
     dev: false
 
-  /flowbite@2.2.1:
-    resolution: {integrity: sha512-iiZyBTtriEDRHrqXZgpKHaxl4B2J8HZUP8Yn1RXozUDKszWHDVj4GxQqMMB9AJHRWOgXV/4E/LJZ/zqQgBUhWA==}
+  /flowbite@2.3.0:
+    resolution: {integrity: sha512-pm3JRo8OIJHGfFYWgaGpPv8E+UdWy0Z3gEAGufw+G/1dusaU/P1zoBLiQpf2/+bYAi+GBQtPVG86KYlV0W+AFQ==}
     dependencies:
       '@popperjs/core': 2.11.8
       mini-svg-data-uri: 1.4.4
