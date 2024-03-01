@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { Toaster, toast } from 'sonner'
 import { Label, Checkbox } from 'flowbite-react'
 import confetti from 'canvas-confetti'
@@ -9,6 +9,8 @@ export default function SelectPlayers ({ matchFunction, setMatches }) {
   const [playersCount, setPlayersCount] = useState(0)
   const [players, setPlayers] = useState([])
   const [includeCountries, setIncludeCountries] = useState(false)
+
+  const buttonRef = useRef(null)
 
   useEffect(() => {
     const handleReduce = quantity => {
@@ -67,7 +69,9 @@ export default function SelectPlayers ({ matchFunction, setMatches }) {
         spread: 70,
         origin: { y: 0.6 }
       })
+      buttonRef.current.focus()
       setTimeout(() => {
+        // Scroll to the bottom of the page to see the teams
         window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' })
       }, 150)
     } catch (error) {
@@ -110,6 +114,9 @@ export default function SelectPlayers ({ matchFunction, setMatches }) {
         <div className='flex gap-2 mx-auto'>
           <button type='submit' className='btn w-fit'>Sortear</button>
           <button type='reset' className='btn reset w-fit' onClick={handleReset}>Limpiar</button>
+          {/* The following hide button is used to lose focus after submitting, so in mobile devices
+          it will close the keyboard */}
+          <button ref={buttonRef} style={{ position: 'fixed', bottom: 0, left: 0, zIndex: -1 }} />
         </div>
       </form>
     </section>

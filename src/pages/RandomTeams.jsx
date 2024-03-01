@@ -18,6 +18,7 @@ export default function RandomTeams () {
         origin: { y: 0.6 }
       })
       setTimeout(() => {
+        // Scroll to the bottom of the page to see the teams
         window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' })
       }, 150)
     } catch (error) {
