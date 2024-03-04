@@ -8,7 +8,7 @@ export default function SinglePage () {
   return (
     <main>
       <Title text='1 vs 1' matchFunction={getSimpleTeamData} setMatches={setMatches} />
-      <section className={`flex items-center justify-center ${matches.length > 0 ? 'min-h-[400px]' : ''}`}>
+      <section className={`flex items-center justify-center ${matches.length > 0 ? 'my-20' : ''}`}>
         <ul className='flex flex-wrap justify-center items-end gap-10'>
           {matches.map(({ players, squad }) => (
             <li key={players} className='flex flex-col justify-between items-center'>

@@ -41,7 +41,7 @@ export default function RandomTeams () {
         </div>
         <button onClick={matchTeams} className='btn w-fit mx-auto'>Sortear</button>
       </section>
-      <section className={`flex items-center justify-center ${teams.length > 0 ? 'min-h-[400px]' : ''}`}>
+      <section className={`flex items-center justify-center ${teams.length > 0 ? 'my-20' : ''}`}>
         <ul className='flex flex-wrap justify-center items-end gap-10'>
           {teams.map(({ name, image }) => (
             <li key={name} className='flex flex-col justify-between items-center'>
