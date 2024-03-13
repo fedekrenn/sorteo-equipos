@@ -14,7 +14,7 @@ export default function Inputs ({ index, handlePlayerChange }) {
 
   return (
     <div>
-      <Label htmlFor={inputID} value={`Nombre ${index + 1}:`} className='text-slate-100' />
+      <Label htmlFor={inputID} value={`Nombre de jugador ${index + 1}:`} className='text-slate-100' />
       <TextInput
         required
         id={inputID}
