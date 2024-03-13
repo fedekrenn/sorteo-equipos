@@ -6,7 +6,11 @@ export default {
     './src/**/*.{js,ts,jsx,tsx}'
   ],
   theme: {
-    extend: {}
+    extend: {
+      dropShadow: {
+        sm: '0px 0px 31px #ffffff33'
+      }
+    }
   },
   plugins: [require('flowbite/plugin')]
 }

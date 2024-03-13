@@ -16,7 +16,7 @@ export default function Pair () {
                 ? <img
                     src={`/team-logos/${squad.image}`}
                     alt={squad.name}
-                    className={`w-24 h-24 object-contain ${
+                    className={`w-24 h-24 object-contain drop-shadow-sm ${
                     matches.length <= 4
                       ? 'md:w-[200px] md:h-[200px]'
                       : 'md:w-[100px] md:h-[100px]'
