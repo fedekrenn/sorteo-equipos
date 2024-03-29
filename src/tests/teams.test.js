@@ -26,6 +26,15 @@ describe('getPairTeamData', () => {
   })
 })
 
+describe('getPairTeamData T2', () => {
+  test('If the list of players is an odd array, the last element should have a null squad', () => {
+    const data = getPairTeamData(array, true)
+
+    expect(data).toBeDefined()
+    expect(data[data.length - 1].squad).toBeNull()
+  })
+})
+
 describe('getTwoRandomTeams', () => {
   test('Should return an array of two random teams', () => {
     const data = getTwoRandomTeams(false)

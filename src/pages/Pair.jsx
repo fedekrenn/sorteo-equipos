@@ -1,6 +1,6 @@
 import { useState } from 'react'
 // Components
-import Title from '@components/Title'
+import SortSection from '@components/SortSection'
 import SelectPlayers from '@components/SelectPlayers'
 // Services
 import { getPairTeamData } from '@services/getTeamData'
@@ -10,9 +10,9 @@ export default function Pair () {
 
   return (
     <main>
-      <Title text='2 vs 2'>
+      <SortSection title='2 vs 2'>
         <SelectPlayers matchFunction={getPairTeamData} setMatches={setMatches} />
-      </Title>
+      </SortSection>
       <section className={`flex items-center justify-center ${matches.length > 0 ? 'my-20' : ''}`}>
         <ul className='flex flex-wrap justify-center items-end gap-10'>
           {matches.map(({ players, squad }) => (

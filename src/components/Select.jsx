@@ -23,15 +23,11 @@ export default function MySelect ({ setPlayersCount, playersCount, handleReset }
         className='form-select mt-1 block w-auto text-black'
       >
         <option value='default'>Elegir opción</option>
-        <option value='2'>2</option>
-        <option value='3'>3</option>
-        <option value='4'>4</option>
-        <option value='5'>5</option>
-        <option value='6'>6</option>
-        <option value='7'>7</option>
-        <option value='8'>8</option>
-        <option value='9'>9</option>
-        <option value='10'>10</option>
+        {Array.from({ length: 9 }, (_, index) => (
+          <option key={index} value={index + 2}>
+            {index + 2}
+          </option>
+        ))}
       </Select>
     </>
   )

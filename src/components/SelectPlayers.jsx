@@ -90,12 +90,12 @@ export default function SelectPlayers ({ matchFunction, setMatches }) {
   return (
     <section>
       <Toaster />
-      <Select
-        setPlayersCount={setPlayersCount}
-        playersCount={playersCount}
-        handleReset={handleReset}
-      />
-      <form action='' onSubmit={handleSubmit} className='flex flex-col gap-4 my-3'>
+      <form onSubmit={handleSubmit} className='flex flex-col gap-4 my-3'>
+        <Select
+          setPlayersCount={setPlayersCount}
+          playersCount={playersCount}
+          handleReset={handleReset}
+        />
         {Array.from({ length: playersCount }).map((_, index) => {
           return (
             <Input
