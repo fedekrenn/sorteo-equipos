@@ -7,7 +7,7 @@ import { Toaster, toast } from 'sonner'
 import { Label, Checkbox } from 'flowbite-react'
 import confetti from 'canvas-confetti'
 
-export default function SelectPlayers ({ matchFunction, setMatches }) {
+export default function DataForm ({ matchFunction, setMatches }) {
   const [playersCount, setPlayersCount] = useState(0)
   const [players, setPlayers] = useState([])
   const [includeCountries, setIncludeCountries] = useState(false)
@@ -88,39 +88,37 @@ export default function SelectPlayers ({ matchFunction, setMatches }) {
   }
 
   return (
-    <section>
+    <form onSubmit={handleSubmit} className='flex flex-col gap-4 my-3'>
       <Toaster />
-      <form onSubmit={handleSubmit} className='flex flex-col gap-4 my-3'>
-        <Select
-          setPlayersCount={setPlayersCount}
-          playersCount={playersCount}
-          handleReset={handleReset}
-        />
-        {Array.from({ length: playersCount }).map((_, index) => {
-          return (
-            <Input
-              key={index}
-              index={index}
-              handlePlayerChange={handlePlayerChange}
-            />
-          )
-        })}
-        <div className='flex items-center gap-2 my-3 mx-auto'>
-          <Checkbox
-            id='includeCountries'
-            checked={includeCountries}
-            onChange={() => setIncludeCountries(!includeCountries)}
+      <Select
+        setPlayersCount={setPlayersCount}
+        playersCount={playersCount}
+        handleReset={handleReset}
+      />
+      {Array.from({ length: playersCount }).map((_, index) => {
+        return (
+          <Input
+            key={index}
+            index={index}
+            handlePlayerChange={handlePlayerChange}
           />
-          <Label htmlFor='includeCountries' value='¿Incluir países? (Opcional)' className='text-slate-100' />
-        </div>
-        <div className='flex gap-2 mx-auto'>
-          <button type='submit' className='btn w-fit'>Sortear</button>
-          <button type='reset' className='btn reset w-fit' onClick={handleReset}>Limpiar</button>
-          {/* The following hide button is used to lose focus after submitting, so in mobile devices
+        )
+      })}
+      <div className='flex items-center gap-2 my-3 mx-auto'>
+        <Checkbox
+          id='includeCountries'
+          checked={includeCountries}
+          onChange={() => setIncludeCountries(!includeCountries)}
+        />
+        <Label htmlFor='includeCountries' value='¿Incluir países? (Opcional)' className='text-slate-100' />
+      </div>
+      <div className='flex gap-2 mx-auto'>
+        <button type='submit' className='btn w-fit'>Sortear</button>
+        <button type='reset' className='btn reset w-fit' onClick={handleReset}>Limpiar</button>
+        {/* The following hide button is used to lose focus after submitting, so in mobile devices
           it will close the keyboard */}
-          <button ref={buttonRef} style={{ position: 'fixed', bottom: 0, left: 0, zIndex: -1 }} />
-        </div>
-      </form>
-    </section>
+        <button ref={buttonRef} style={{ position: 'fixed', bottom: 0, left: 0, zIndex: -1 }} />
+      </div>
+    </form>
   )
 }

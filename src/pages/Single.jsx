@@ -1,7 +1,7 @@
 import { useState } from 'react'
 // Components
 import SortSection from '@components/SortSection'
-import SelectPlayers from '@components/SelectPlayers'
+import DataForm from '@components/DataForm'
 // Services
 import { getSimpleTeamData } from '@services/getTeamData'
 
@@ -11,7 +11,7 @@ export default function SinglePage () {
   return (
     <main>
       <SortSection title='1 vs 1'>
-        <SelectPlayers matchFunction={getSimpleTeamData} setMatches={setMatches} />
+        <DataForm matchFunction={getSimpleTeamData} setMatches={setMatches} />
       </SortSection>
       <section className={`flex items-center justify-center ${matches.length > 0 ? 'my-20' : ''}`}>
         <ul className='flex flex-wrap justify-center items-end gap-10'>
