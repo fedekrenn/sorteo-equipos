@@ -1,8 +1,10 @@
 import { useState } from 'react'
-import { getTwoRandomTeams } from '@services/getTeamData'
+// Libraries
 import { Label, Checkbox } from 'flowbite-react'
 import { Toaster, toast } from 'sonner'
 import confetti from 'canvas-confetti'
+// Services
+import { getTwoRandomTeams } from '@services/getTeamData'
 
 export default function RandomTeams () {
   const [teams, setTeams] = useState([])

@@ -1,9 +1,11 @@
 import { useState, useEffect, useRef } from 'react'
+// Components
+import Select from '@components/Select'
+import Input from '@components/Input'
+// Libraries
 import { Toaster, toast } from 'sonner'
 import { Label, Checkbox } from 'flowbite-react'
 import confetti from 'canvas-confetti'
-import Select from './Select'
-import Input from './Input'
 
 export default function SelectPlayers ({ matchFunction, setMatches }) {
   const [playersCount, setPlayersCount] = useState(0)

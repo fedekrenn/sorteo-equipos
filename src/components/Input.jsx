@@ -1,4 +1,5 @@
 import { useState, useId } from 'react'
+// Libraries
 import { Label, TextInput } from 'flowbite-react'
 
 export default function Inputs ({ index, handlePlayerChange }) {

@@ -1,4 +1,5 @@
 import { useId } from 'react'
+// Libraries
 import { Label, Select } from 'flowbite-react'
 
 export default function MySelect ({ setPlayersCount, playersCount, handleReset }) {
