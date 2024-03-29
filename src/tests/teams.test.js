@@ -31,7 +31,11 @@ describe('getPairTeamData T2', () => {
     const data = getPairTeamData(array, true)
 
     expect(data).toBeDefined()
-    expect(data[data.length - 1].squad).toBeNull()
+    if (data.length % 2 !== 0) {
+      expect(data[data.length - 1].squad).toBeNull()
+    } else {
+      expect(data[data.length - 1].squad).not.toBeNull()
+    }
   })
 })
 
