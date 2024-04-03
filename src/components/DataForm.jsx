@@ -11,11 +11,12 @@ export default function DataForm ({ matchFunction, setMatches }) {
   const [playersCount, setPlayersCount] = useState(0)
   const [players, setPlayers] = useState([])
   const [includeCountries, setIncludeCountries] = useState(false)
+  const [isDisabled, setIsDisabled] = useState(false)
 
   const buttonRef = useRef(null)
 
   useEffect(() => {
-    const handleReduce = quantity => {
+    const handleReduce = (quantity) => {
       const newPlayers = [...players]
       newPlayers.splice(-quantity)
       setPlayers(newPlayers)
@@ -25,8 +26,16 @@ export default function DataForm ({ matchFunction, setMatches }) {
       const difference = players.length - playersCount
       handleReduce(difference)
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [playersCount])
+
+  useEffect(() => {
+    if (isDisabled) {
+      setTimeout(() => {
+        setIsDisabled(false)
+      }, 5000)
+    }
+  }, [isDisabled])
 
   const handlePlayerChange = (index, name) => {
     const newPlayers = [...players]
@@ -41,7 +50,7 @@ export default function DataForm ({ matchFunction, setMatches }) {
       return toast.info('Completa correctamente los campos')
     }
 
-    if (players.some(player => player.length < 3)) {
+    if (players.some((player) => player.length < 3)) {
       return toast.info('Los nombres deben tener al menos 3 caracteres')
     }
 
@@ -49,7 +58,7 @@ export default function DataForm ({ matchFunction, setMatches }) {
       return players.indexOf(player) === index
     })
 
-    const areNamesNotEmpty = players.every(player => player.trim() !== '')
+    const areNamesNotEmpty = players.every((player) => player.trim() !== '')
 
     if (!areNamesUnique) {
       toast.info('No puedes repetir nombres')
@@ -61,10 +70,13 @@ export default function DataForm ({ matchFunction, setMatches }) {
       return
     }
 
-    const playersWithTrimmedNames = players.map(player => player.trim())
+    const playersWithTrimmedNames = players.map((player) => player.trim())
 
     try {
-      const generatedMatches = matchFunction(playersWithTrimmedNames, includeCountries)
+      const generatedMatches = matchFunction(
+        playersWithTrimmedNames,
+        includeCountries
+      )
       setMatches(generatedMatches)
       confetti({
         particleCount: 100,
@@ -72,9 +84,13 @@ export default function DataForm ({ matchFunction, setMatches }) {
         origin: { y: 0.6 }
       })
       buttonRef.current.focus()
+      setIsDisabled(true)
       setTimeout(() => {
         // Scroll to the bottom of the page to see the teams
-        window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' })
+        window.scrollTo({
+          top: document.body.scrollHeight,
+          behavior: 'smooth'
+        })
       }, 150)
     } catch (error) {
       toast.error(error.message)
@@ -85,6 +101,7 @@ export default function DataForm ({ matchFunction, setMatches }) {
     setPlayersCount(0)
     setPlayers([])
     setMatches([])
+    setIsDisabled(false)
   }
 
   return (
@@ -110,14 +127,37 @@ export default function DataForm ({ matchFunction, setMatches }) {
           checked={includeCountries}
           onChange={() => setIncludeCountries(!includeCountries)}
         />
-        <Label htmlFor='includeCountries' value='¿Incluir países? (Opcional)' className='text-slate-100' />
+        <Label
+          htmlFor='includeCountries'
+          value='¿Incluir países? (Opcional)'
+          className='text-slate-100'
+        />
       </div>
       <div className='flex gap-2 mx-auto'>
-        <button type='submit' className='btn w-fit'>Sortear</button>
-        <button type='reset' className='btn reset w-fit' onClick={handleReset}>Limpiar</button>
+        {isDisabled
+          ? (
+            <button
+              type='button'
+              className='btn w-fit bg-slate-600 hover:bg-slate-600 hover:cursor-not-allowed'
+              onClick={() => toast.info('¡Espera unos segundos antes de volver a sortear!')}
+            >
+              Sortear
+            </button>
+            )
+          : (
+            <button type='submit' className='btn w-fit bg-[#f3ecec]'>
+              Sortear
+            </button>
+            )}
+        <button type='reset' className='btn reset w-fit' onClick={handleReset}>
+          Limpiar
+        </button>
         {/* The following hide button is used to lose focus after submitting, so in mobile devices
           it will close the keyboard */}
-        <button ref={buttonRef} style={{ position: 'fixed', bottom: 0, left: 0, zIndex: -1 }} />
+        <button
+          ref={buttonRef}
+          style={{ position: 'fixed', bottom: 0, left: 0, zIndex: -1 }}
+        />
       </div>
     </form>
   )
