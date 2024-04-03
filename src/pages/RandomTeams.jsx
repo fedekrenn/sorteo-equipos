@@ -8,11 +8,11 @@ import { getTwoRandomTeams } from '@services/getTeamData'
 
 export default function RandomTeams () {
   const [teams, setTeams] = useState([])
-  const [countries, setCountries] = useState(false)
+  const [includeCountries, setIncludeCountries] = useState(false)
 
   const matchTeams = () => {
     try {
-      const teams = getTwoRandomTeams(countries)
+      const teams = getTwoRandomTeams(includeCountries)
       setTeams(teams)
       confetti({
         particleCount: 100,
@@ -36,8 +36,8 @@ export default function RandomTeams () {
         <div className='flex items-center gap-2 my-5 mx-auto'>
           <Checkbox
             id='includeCountriesRandom'
-            checked={countries}
-            onChange={() => setCountries(!countries)}
+            checked={includeCountries}
+            onChange={() => setIncludeCountries(!includeCountries)}
           />
           <Label htmlFor='includeCountriesRandom' value='¿Incluir países?' className='text-slate-100' />
         </div>
