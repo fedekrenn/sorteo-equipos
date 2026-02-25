@@ -6,6 +6,7 @@ import Pair from '@pages/Pair'
 import Single from '@pages/Single'
 import RandomTeams from '@pages/RandomTeams'
 import NotFound from '@pages/NotFound'
+import { Analytics } from "@vercel/analytics/next"
 
 function App () {
   return (
@@ -19,6 +20,7 @@ function App () {
         <Route path='*' element={<NotFound />} />
       </Routes>
       <hr className='max-w-[500px] mx-auto' />
+      <Analytics />
       <Footer />
     </>
   )
