@@ -6,7 +6,7 @@ import Pair from '@pages/Pair'
 import Single from '@pages/Single'
 import RandomTeams from '@pages/RandomTeams'
 import NotFound from '@pages/NotFound'
-import { Analytics } from "@vercel/analytics/react"
+import { Analytics } from '@vercel/analytics/react'
 
 function App () {
   return (
