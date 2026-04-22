@@ -1,6 +1,7 @@
 import { Routes, Route } from 'react-router-dom'
 import Header from '@components/Header'
 import Footer from '@components/Footer'
+import ModeNav from '@components/ModeNav'
 import Index from '@pages/Index'
 import Pair from '@pages/Pair'
 import Single from '@pages/Single'
@@ -10,8 +11,10 @@ import { Analytics } from '@vercel/analytics/react'
 
 function App () {
   return (
-    <>
+    <div className='app-shell'>
+      <div className='app-bg-overlay' aria-hidden='true' />
       <Header />
+      <ModeNav />
       <Routes>
         <Route path='/' element={<Index />} />
         <Route path='/1vs1' element={<Single />} />
@@ -19,10 +22,9 @@ function App () {
         <Route path='/random-teams' element={<RandomTeams />} />
         <Route path='*' element={<NotFound />} />
       </Routes>
-      <hr className='max-w-[500px] mx-auto' />
       <Analytics />
       <Footer />
-    </>
+    </div>
   )
 }
 

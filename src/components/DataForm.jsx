@@ -3,8 +3,12 @@ import { useState, useEffect, useRef } from 'react'
 import Select from '@components/Select'
 import Input from '@components/Input'
 // Libraries
-import { Toaster, toast } from 'sonner'
-import { Label, Checkbox } from 'flowbite-react'
+import { toast } from 'sonner'
+import { Toaster } from '@/components/ui/sonner'
+import { Label } from '@/components/ui/label'
+import { Checkbox } from '@/components/ui/checkbox'
+import { Button } from '@/components/ui/button'
+import { Card, CardContent } from '@/components/ui/card'
 import confetti from 'canvas-confetti'
 
 export default function DataForm ({ matchFunction, setMatches }) {
@@ -105,60 +109,76 @@ export default function DataForm ({ matchFunction, setMatches }) {
   }
 
   return (
-    <form onSubmit={handleSubmit} className='flex flex-col gap-4 my-3'>
-      <Toaster />
-      <Select
-        setPlayersCount={setPlayersCount}
-        playersCount={playersCount}
-        handleReset={handleReset}
-      />
-      {Array.from({ length: playersCount }).map((_, index) => {
-        return (
-          <Input
-            key={index}
-            index={index}
-            handlePlayerChange={handlePlayerChange}
+    <Card className='arcade-card border-white/15 bg-black/55 text-white backdrop-blur-xl'>
+      <CardContent className='pt-6'>
+        <form onSubmit={handleSubmit} className='flex flex-col gap-4'>
+          <Toaster />
+          <Select
+            setPlayersCount={setPlayersCount}
+            playersCount={playersCount}
+            handleReset={handleReset}
           />
-        )
-      })}
-      <div className='flex items-center gap-2 my-3 mx-auto'>
-        <Checkbox
-          id='includeCountries'
-          checked={includeCountries}
-          onChange={() => setIncludeCountries(!includeCountries)}
-        />
-        <Label
-          htmlFor='includeCountries'
-          value='¿Incluir países? (Opcional)'
-          className='text-slate-100'
-        />
-      </div>
-      <div className='flex gap-2 mx-auto'>
-        {isDisabled
-          ? (
-            <button
-              type='button'
-              className='btn w-fit bg-slate-600 hover:bg-slate-600 hover:cursor-not-allowed'
-              onClick={() => toast.info('¡Espera unos segundos antes de volver a sortear!')}
-            >
-              Sortear
-            </button>
+          {Array.from({ length: playersCount }).map((_, index) => {
+            return (
+              <Input
+                key={index}
+                index={index}
+                handlePlayerChange={handlePlayerChange}
+              />
             )
-          : (
-            <button type='submit' className='btn w-fit bg-[#f3ecec]'>
-              Sortear
-            </button>
-            )}
-        <button type='reset' className='btn reset w-fit' onClick={handleReset}>
-          Limpiar
-        </button>
-        {/* The following hide button is used to lose focus after submitting, so in mobile devices
-          it will close the keyboard */}
-        <button
-          ref={buttonRef}
-          style={{ position: 'fixed', bottom: 0, left: 0, zIndex: -1 }}
-        />
-      </div>
-    </form>
+          })}
+          <div className='mx-auto my-2 flex items-center gap-2'>
+            <Checkbox
+              id='includeCountries'
+              checked={includeCountries}
+              onCheckedChange={(checked) => setIncludeCountries(Boolean(checked))}
+              className='border-white/30 bg-black/50'
+            />
+            <Label
+              htmlFor='includeCountries'
+              className='cursor-pointer text-sm font-medium text-slate-200'
+            >
+              Incluir países (opcional)
+            </Label>
+          </div>
+          <div className='mx-auto flex flex-wrap items-center justify-center gap-3'>
+            {isDisabled
+              ? (
+                <Button
+                  type='button'
+                  variant='secondary'
+                  className='h-11 rounded-xl border border-white/10 bg-slate-600 px-5 text-base font-semibold text-white hover:bg-slate-600'
+                  onClick={() => toast.info('¡Esperá unos segundos antes de volver a sortear!')}
+                >
+                  Sortear
+                </Button>
+                )
+              : (
+                <Button
+                  type='submit'
+                  className='h-11 rounded-xl bg-white px-5 text-base font-semibold text-[#12091f] transition hover:bg-slate-200'
+                >
+                  Sortear
+                </Button>
+                )}
+            <Button
+              type='reset'
+              variant='outline'
+              className='h-11 rounded-xl border-white/30 bg-transparent px-5 text-base font-semibold text-white hover:bg-white/10'
+              onClick={handleReset}
+            >
+              Limpiar
+            </Button>
+            <button
+              ref={buttonRef}
+              type='button'
+              tabIndex={-1}
+              aria-hidden='true'
+              className='fixed left-0 bottom-0 -z-10 h-px w-px opacity-0'
+            />
+          </div>
+        </form>
+      </CardContent>
+    </Card>
   )
 }

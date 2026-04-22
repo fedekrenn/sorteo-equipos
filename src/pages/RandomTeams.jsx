@@ -1,8 +1,15 @@
 import { useState } from 'react'
 // Libraries
-import { Label, Checkbox } from 'flowbite-react'
-import { Toaster, toast } from 'sonner'
+import { toast } from 'sonner'
+import { Label } from '@/components/ui/label'
+import { Checkbox } from '@/components/ui/checkbox'
+import { Button } from '@/components/ui/button'
+import { Card, CardContent } from '@/components/ui/card'
+import { Toaster } from '@/components/ui/sonner'
 import confetti from 'canvas-confetti'
+import SortSection from '@components/SortSection'
+import ResultCard from '@components/ResultCard'
+import ResultsGrid from '@components/ResultsGrid'
 // Services
 import { getTwoRandomTeams } from '@services/getTeamData'
 
@@ -30,29 +37,47 @@ export default function RandomTeams () {
 
   return (
     <main>
-      <section className='flex flex-col max-w-[500px] mx-auto w-full'>
-        <Toaster />
-        <h2 className='text-3xl text-center font-bold mb-3'>Partido aleatorio</h2>
-        <div className='flex items-center gap-2 my-5 mx-auto'>
-          <Checkbox
-            id='includeCountriesRandom'
-            checked={includeCountries}
-            onChange={() => setIncludeCountries(!includeCountries)}
-          />
-          <Label htmlFor='includeCountriesRandom' value='¿Incluir países?' className='text-slate-100' />
-        </div>
-        <button onClick={matchTeams} className='btn bg-[#f3ecec] w-fit mx-auto'>Sortear</button>
-      </section>
-      <section className={`flex items-center justify-center ${teams.length > 0 ? 'my-20' : ''}`}>
-        <ul className='flex flex-wrap justify-center items-end gap-10'>
+      <SortSection
+        title='Partido aleatorio'
+        subtitle='Obtené dos equipos al instante para arrancar un cruce rápido.'
+      >
+        <Card className='arcade-card border-white/15 bg-black/55 text-white backdrop-blur-xl'>
+          <CardContent className='space-y-6 pt-6'>
+            <Toaster />
+            <div className='mx-auto flex items-center justify-center gap-2'>
+              <Checkbox
+                id='includeCountriesRandom'
+                checked={includeCountries}
+                onCheckedChange={(checked) => setIncludeCountries(Boolean(checked))}
+                className='border-white/30 bg-black/50'
+              />
+              <Label htmlFor='includeCountriesRandom' className='cursor-pointer text-sm font-medium text-slate-200'>
+                Incluir países
+              </Label>
+            </div>
+            <div className='text-center'>
+              <Button
+                onClick={matchTeams}
+                className='h-11 rounded-xl bg-white px-5 text-base font-semibold text-[#12091f] transition hover:bg-slate-200'
+              >
+                Sortear
+              </Button>
+            </div>
+          </CardContent>
+        </Card>
+      </SortSection>
+      {teams.length > 0 && (
+        <ResultsGrid>
           {teams.map(({ name, image }) => (
-            <li key={name} className='flex flex-col justify-between items-center'>
-              <img src={`/team-logos/${image}`} alt={name} className='w-32 h-32 object-contain sm:w-[200px] sm:h-[200px] drop-shadow-sm' />
-              <span className='w-full text-center mt-4 items-end'>{name}</span>
-            </li>
+            <ResultCard
+              key={name}
+              title={name}
+              image={`/team-logos/${image}`}
+              imageAlt={name}
+            />
           ))}
-        </ul>
-      </section>
+        </ResultsGrid>
+      )}
     </main>
   )
 }
