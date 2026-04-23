@@ -16,8 +16,11 @@ export default function DataForm ({ matchFunction, setMatches }) {
   const [players, setPlayers] = useState([])
   const [includeCountries, setIncludeCountries] = useState(false)
   const [isDisabled, setIsDisabled] = useState(false)
+  const [fieldErrors, setFieldErrors] = useState({})
+  const [statusMessage, setStatusMessage] = useState('')
 
-  const buttonRef = useRef(null)
+  const statusRef = useRef(null)
+  const formRef = useRef(null)
 
   useEffect(() => {
     const handleReduce = (quantity) => {
@@ -45,36 +48,94 @@ export default function DataForm ({ matchFunction, setMatches }) {
     const newPlayers = [...players]
     newPlayers[index] = name.toLowerCase()
     setPlayers(newPlayers)
+    setFieldErrors((prev) => {
+      if (prev[index] == null) return prev
+      const next = { ...prev }
+      delete next[index]
+      return next
+    })
+  }
+
+  const focusFirstInvalidField = (errors) => {
+    const firstInvalidIndex = Object.keys(errors)
+      .map(Number)
+      .sort((a, b) => a - b)[0]
+
+    if (firstInvalidIndex == null) return
+
+    const target = formRef.current?.querySelector(
+      `[data-player-input-index="${firstInvalidIndex}"]`
+    )
+    target?.focus()
   }
 
   const handleSubmit = (event) => {
     event.preventDefault()
 
+    setStatusMessage('')
+    setFieldErrors({})
+
     if (playersCount === 0 && players.length === 0) {
+      setStatusMessage('Elegí la cantidad de jugadores para continuar.')
       return toast.info('Completa correctamente los campos')
     }
 
-    if (players.some((player) => player.length < 3)) {
-      return toast.info('Los nombres deben tener al menos 3 caracteres')
-    }
+    const emptyErrors = {}
+    const lengthErrors = {}
 
-    const areNamesUnique = players.every((player, index) => {
-      return players.indexOf(player) === index
+    Array.from({ length: playersCount }).forEach((_, index) => {
+      const player = players[index] ?? ''
+      const trimmedPlayer = player.trim()
+      if (trimmedPlayer === '') {
+        emptyErrors[index] = 'No ingresaste el nombre del jugador.'
+      } else if (trimmedPlayer.length < 3) {
+        lengthErrors[index] = 'El nombre debe tener al menos 3 caracteres.'
+      }
     })
 
-    const areNamesNotEmpty = players.every((player) => player.trim() !== '')
-
-    if (!areNamesUnique) {
-      toast.info('No puedes repetir nombres')
-      return
-    }
-
-    if (!areNamesNotEmpty) {
+    if (Object.keys(emptyErrors).length > 0) {
+      setFieldErrors(emptyErrors)
+      setStatusMessage('Hay campos vacios. Completalos para poder sortear.')
+      focusFirstInvalidField(emptyErrors)
       toast.info('No ingresaste todos los nombres')
       return
     }
 
-    const playersWithTrimmedNames = players.map((player) => player.trim())
+    if (Object.keys(lengthErrors).length > 0) {
+      setFieldErrors(lengthErrors)
+      setStatusMessage('Hay nombres demasiado cortos. Corregilos para continuar.')
+      focusFirstInvalidField(lengthErrors)
+      toast.info('Los nombres deben tener al menos 3 caracteres')
+      return
+    }
+
+    const playersWithTrimmedNames = Array.from({ length: playersCount }, (_, index) => {
+      return (players[index] ?? '').trim()
+    })
+
+    const duplicateErrors = {}
+    const normalizedPlayerIndexes = new Map()
+    playersWithTrimmedNames.forEach((player, index) => {
+      const indexes = normalizedPlayerIndexes.get(player) ?? []
+      indexes.push(index)
+      normalizedPlayerIndexes.set(player, indexes)
+    })
+
+    normalizedPlayerIndexes.forEach((indexes) => {
+      if (indexes.length > 1) {
+        indexes.forEach((index) => {
+          duplicateErrors[index] = 'Este nombre esta repetido. Usa un nombre unico.'
+        })
+      }
+    })
+
+    if (Object.keys(duplicateErrors).length > 0) {
+      setFieldErrors(duplicateErrors)
+      setStatusMessage('No podes repetir nombres. Corregi los jugadores duplicados.')
+      focusFirstInvalidField(duplicateErrors)
+      toast.info('No puedes repetir nombres')
+      return
+    }
 
     try {
       const generatedMatches = matchFunction(
@@ -82,12 +143,13 @@ export default function DataForm ({ matchFunction, setMatches }) {
         includeCountries
       )
       setMatches(generatedMatches)
+      setStatusMessage('Sorteo completado. Tus resultados ya estan disponibles.')
       confetti({
         particleCount: 100,
         spread: 70,
         origin: { y: 0.6 }
       })
-      buttonRef.current.focus()
+      statusRef.current?.focus()
       setIsDisabled(true)
       setTimeout(() => {
         // Scroll to the bottom of the page to see the teams
@@ -97,6 +159,7 @@ export default function DataForm ({ matchFunction, setMatches }) {
         })
       }, 150)
     } catch (error) {
+      setStatusMessage(error.message)
       toast.error(error.message)
     }
   }
@@ -106,13 +169,24 @@ export default function DataForm ({ matchFunction, setMatches }) {
     setPlayers([])
     setMatches([])
     setIsDisabled(false)
+    setFieldErrors({})
+    setStatusMessage('Formulario reiniciado.')
   }
 
   return (
     <Card className='arcade-card border-white/15 bg-black/55 text-white backdrop-blur-xl'>
       <CardContent className='pt-6'>
-        <form onSubmit={handleSubmit} className='flex flex-col gap-4'>
+        <form ref={formRef} onSubmit={handleSubmit} className='flex flex-col gap-4' noValidate>
           <Toaster />
+          <p
+            ref={statusRef}
+            tabIndex={-1}
+            role='status'
+            aria-live='polite'
+            className='text-sm text-slate-200'
+          >
+            {statusMessage}
+          </p>
           <Select
             setPlayersCount={setPlayersCount}
             playersCount={playersCount}
@@ -124,6 +198,7 @@ export default function DataForm ({ matchFunction, setMatches }) {
                 key={index}
                 index={index}
                 handlePlayerChange={handlePlayerChange}
+                error={fieldErrors[index]}
               />
             )
           })}
@@ -169,13 +244,6 @@ export default function DataForm ({ matchFunction, setMatches }) {
             >
               Limpiar
             </Button>
-            <button
-              ref={buttonRef}
-              type='button'
-              tabIndex={-1}
-              aria-hidden='true'
-              className='fixed left-0 bottom-0 -z-10 h-px w-px opacity-0'
-            />
           </div>
         </form>
       </CardContent>
