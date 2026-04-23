@@ -23,12 +23,12 @@ const modes = [
 
 export default function Index () {
   return (
-    <main>
+    <main id='main-content' tabIndex='-1'>
       <section className='mx-auto grid w-full max-w-4xl gap-8 px-4 pt-6 md:px-6 md:pt-8'>
         <header className='arcade-hero mx-auto max-w-3xl rounded-3xl border border-white/15 bg-black/55 px-6 py-8 text-center backdrop-blur-xl md:px-10'>
-          <h2 className='text-balance text-3xl font-semibold tracking-tight text-white md:text-5xl'>
+          <h1 className='text-balance text-3xl font-semibold tracking-tight text-white md:text-5xl'>
             Sorteos de equipos para cada partido
-          </h2>
+          </h1>
           <p className='mx-auto mt-4 max-w-2xl text-base leading-relaxed text-slate-200 md:text-lg'>
             Elegí el modo, cargá jugadores y generá cruces de forma clara, rápida y sin perder tiempo.
           </p>

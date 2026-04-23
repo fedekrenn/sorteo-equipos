@@ -81,6 +81,12 @@ export default function RouteMeta () {
     upsertMetaTag('meta[name="twitter:image"]', 'name', 'twitter:image', OG_IMAGE_URL)
     upsertMetaTag('meta[property="twitter:url"]', 'property', 'twitter:url', canonicalUrl)
     upsertCanonical(canonicalUrl)
+
+    // SPA focus management: move focus to main content on route change
+    const mainContent = document.getElementById('main-content')
+    if (mainContent) {
+      mainContent.focus()
+    }
   }, [location.pathname])
 
   return null

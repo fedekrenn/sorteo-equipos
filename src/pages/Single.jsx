@@ -11,7 +11,7 @@ export default function SinglePage () {
   const [matches, setMatches] = useState([])
 
   return (
-    <main>
+    <main id='main-content' tabIndex='-1'>
       <SortSection
         title='Modo 1 vs 1'
         subtitle='Ingresá los jugadores y generá cruces con clubes o selecciones en segundos.'

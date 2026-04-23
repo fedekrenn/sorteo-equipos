@@ -36,7 +36,7 @@ export default function RandomTeams () {
   }
 
   return (
-    <main>
+    <main id='main-content' tabIndex='-1'>
       <SortSection
         title='Partido aleatorio'
         subtitle='Obtené dos equipos al instante para arrancar un cruce rápido.'

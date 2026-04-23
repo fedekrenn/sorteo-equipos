@@ -11,7 +11,7 @@ export default function Pair () {
   const [matches, setMatches] = useState([])
 
   return (
-    <main>
+    <main id='main-content' tabIndex='-1'>
       <SortSection
         title='Modo 2 vs 2'
         subtitle='Armá duplas balanceadas y sorteá rivales con una visual de partido real.'

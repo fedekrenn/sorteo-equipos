@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 
 export default function NotFound () {
   return (
-    <main className='px-4 md:px-6'>
+    <main id='main-content' tabIndex='-1' className='px-4 md:px-6'>
       <section className='mx-auto mt-8 flex w-full max-w-3xl flex-col items-center gap-4 rounded-3xl border border-white/15 bg-black/55 p-8 text-center backdrop-blur-xl'>
         <h1 className='text-3xl font-semibold text-white md:text-4xl'>Página no encontrada</h1>
         <p className='text-slate-300'>La ruta que buscás no existe o fue movida.</p>

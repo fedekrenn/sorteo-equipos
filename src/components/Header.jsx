@@ -6,6 +6,9 @@ import image from '../assets/logo.webp'
 export default function Header () {
   return (
     <header className='mx-auto w-full max-w-4xl px-4 pt-6 md:px-6 md:pt-8'>
+      <a href='#main-content' className='sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-50 focus:bg-white focus:text-black focus:px-2 focus:py-1 focus:rounded focus:ring-2 focus:ring-blue-500'>
+        Saltar al contenido principal
+      </a>
       <Link
         to='/'
         className='group relative flex min-h-16 items-center justify-between overflow-hidden rounded-2xl border border-white/15 bg-black/60 px-4 py-3 backdrop-blur-xl transition duration-300 hover:border-white/30'
