@@ -1,38 +1,38 @@
-import { useLocation, useNavigate } from 'react-router-dom'
-import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs'
+import { Link, useLocation } from 'react-router-dom'
 
-const routes = {
-  home: '/',
-  single: '/1vs1',
-  pair: '/2vs2',
-  random: '/random-teams'
-}
-
-function getTabValue (pathname) {
-  if (pathname === routes.single) return 'single'
-  if (pathname === routes.pair) return 'pair'
-  if (pathname === routes.random) return 'random'
-  return 'home'
-}
+const modeLinks = [
+  { to: '/', label: 'Inicio' },
+  { to: '/1vs1', label: '1 vs 1' },
+  { to: '/2vs2', label: '2 vs 2' },
+  { to: '/random-teams', label: 'Aleatorio' }
+]
 
 export default function ModeNav () {
   const location = useLocation()
-  const navigate = useNavigate()
 
   return (
     <nav className='mx-auto mt-2 w-full max-w-4xl px-4 md:px-6' aria-label='Modos de sorteo'>
-      <Tabs
-        value={getTabValue(location.pathname)}
-        onValueChange={(value) => navigate(routes[value])}
-        className='items-center'
-      >
-        <TabsList className='mx-auto h-11 rounded-2xl border border-white/15 bg-black/45 px-1.5 backdrop-blur-xl'>
-          <TabsTrigger value='home' className='rounded-xl px-4 text-sm'>Inicio</TabsTrigger>
-          <TabsTrigger value='single' className='rounded-xl px-4 text-sm'>1 vs 1</TabsTrigger>
-          <TabsTrigger value='pair' className='rounded-xl px-4 text-sm'>2 vs 2</TabsTrigger>
-          <TabsTrigger value='random' className='rounded-xl px-4 text-sm'>Aleatorio</TabsTrigger>
-        </TabsList>
-      </Tabs>
+      <ul className='mx-auto inline-flex min-h-11 flex-wrap items-center justify-center gap-1.5 rounded-2xl border border-white/15 bg-black/45 px-1.5 py-1 backdrop-blur-xl'>
+        {modeLinks.map(({ to, label }) => {
+          const isActive = location.pathname === to
+
+          return (
+            <li key={to}>
+              <Link
+                to={to}
+                aria-current={isActive ? 'page' : undefined}
+                className={`inline-flex h-9 items-center justify-center rounded-xl px-4 text-sm font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300/80 ${
+                  isActive
+                    ? 'bg-white text-[#12091f] shadow-[0_6px_16px_rgba(255,255,255,0.25)]'
+                    : 'text-slate-100 hover:bg-white/15 hover:text-white'
+                }`}
+              >
+                {label}
+              </Link>
+            </li>
+          )
+        })}
+      </ul>
     </nav>
   )
 }
