@@ -1,14 +1,16 @@
+import { Suspense, lazy } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import Header from '@components/Header'
 import Footer from '@components/Footer'
 import ModeNav from '@components/ModeNav'
 import RouteMeta from '@components/RouteMeta'
-import Index from '@pages/Index'
-import Pair from '@pages/Pair'
-import Single from '@pages/Single'
-import RandomTeams from '@pages/RandomTeams'
-import NotFound from '@pages/NotFound'
 import { Analytics } from '@vercel/analytics/react'
+
+const Index = lazy(async () => await import('@pages/Index'))
+const Pair = lazy(async () => await import('@pages/Pair'))
+const Single = lazy(async () => await import('@pages/Single'))
+const RandomTeams = lazy(async () => await import('@pages/RandomTeams'))
+const NotFound = lazy(async () => await import('@pages/NotFound'))
 
 function App () {
   return (
@@ -17,13 +19,15 @@ function App () {
       <RouteMeta />
       <Header />
       <ModeNav />
-      <Routes>
-        <Route path='/' element={<Index />} />
-        <Route path='/1vs1' element={<Single />} />
-        <Route path='/2vs2' element={<Pair />} />
-        <Route path='/random-teams' element={<RandomTeams />} />
-        <Route path='*' element={<NotFound />} />
-      </Routes>
+      <Suspense fallback={<main id='main-content' tabIndex='-1' />}>
+        <Routes>
+          <Route path='/' element={<Index />} />
+          <Route path='/1vs1' element={<Single />} />
+          <Route path='/2vs2' element={<Pair />} />
+          <Route path='/random-teams' element={<RandomTeams />} />
+          <Route path='*' element={<NotFound />} />
+        </Routes>
+      </Suspense>
       <Analytics />
       <Footer />
     </div>
