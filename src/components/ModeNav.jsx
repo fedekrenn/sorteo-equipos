@@ -12,7 +12,7 @@ export default function ModeNav () {
 
   return (
     <nav className='mx-auto mt-2 w-full max-w-4xl px-4 md:px-6' aria-label='Modos de sorteo'>
-      <ul className='mx-auto inline-flex min-h-11 flex-wrap items-center justify-center gap-1.5 rounded-2xl border border-white/15 bg-black/45 px-1.5 py-1 backdrop-blur-xl'>
+      <ul className='mx-auto inline-flex min-h-11 flex-wrap items-center justify-center gap-1.5 rounded-2xl border border-white/15 bg-black/45 px-1.5 py-1 backdrop-blur-xl animate-fade-in-up animate-delay-200 animate-duration-slow'>
         {modeLinks.map(({ to, label }) => {
           const isActive = location.pathname === to
 

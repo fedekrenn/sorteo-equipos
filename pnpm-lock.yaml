@@ -44,6 +44,9 @@ importers:
       sonner:
         specifier: 1.7.4
         version: 1.7.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      tailwind-animations:
+        specifier: ^1.0.1
+        version: 1.0.1(tailwindcss@4.2.4)
       tailwind-merge:
         specifier: ^3.5.0
         version: 3.5.0
@@ -3655,6 +3658,11 @@ packages:
   tagged-tag@1.0.0:
     resolution: {integrity: sha512-yEFYrVhod+hdNyx7g5Bnkkb0G6si8HJurOoOEgC8B/O0uXLHlaey/65KRv6cuWBNhBgHKAROVpc7QyYqE5gFng==}
     engines: {node: '>=20'}
+
+  tailwind-animations@1.0.1:
+    resolution: {integrity: sha512-5ouCdgfGS4kcyuzRSb/1O3o9f5Akssi7ue46PHfKjvPLMWjtnzmqM8i6ElES3tKVTyhjSaTPfLti7aB7WSxhZg==}
+    peerDependencies:
+      tailwindcss: ^4.0.0
 
   tailwind-merge@3.5.0:
     resolution: {integrity: sha512-I8K9wewnVDkL1NTGoqWmVEIlUcB9gFriAEkXkfCjX5ib8ezGxtR3xD7iZIxrfArjEsH7F1CHD4RFUtxefdqV/A==}
@@ -7775,6 +7783,10 @@ snapshots:
   supports-preserve-symlinks-flag@1.0.0: {}
 
   tagged-tag@1.0.0: {}
+
+  tailwind-animations@1.0.1(tailwindcss@4.2.4):
+    dependencies:
+      tailwindcss: 4.2.4
 
   tailwind-merge@3.5.0: {}
 

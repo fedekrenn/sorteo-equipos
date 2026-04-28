@@ -174,7 +174,7 @@ export default function DataForm ({ matchFunction, setMatches }) {
   }
 
   return (
-    <Card className='arcade-card border-white/15 bg-black/55 text-white backdrop-blur-xl'>
+    <Card className='arcade-card border-white/15 bg-black/55 text-white backdrop-blur-xl animate-fade-in-up animate-delay-200'>
       <CardContent className='pt-6'>
         <form ref={formRef} onSubmit={handleSubmit} className='flex flex-col gap-4' noValidate>
           <Toaster />
@@ -194,12 +194,13 @@ export default function DataForm ({ matchFunction, setMatches }) {
           />
           {Array.from({ length: playersCount }).map((_, index) => {
             return (
-              <Input
-                key={index}
-                index={index}
-                handlePlayerChange={handlePlayerChange}
-                error={fieldErrors[index]}
-              />
+              <div key={index} className='animate-fade-in-down animate-duration-fast'>
+                <Input
+                  index={index}
+                  handlePlayerChange={handlePlayerChange}
+                  error={fieldErrors[index]}
+                />
+              </div>
             )
           })}
           <div className='mx-auto my-2 flex items-center gap-2'>

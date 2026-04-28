@@ -58,7 +58,7 @@ export default function RandomTeams () {
             <div className='text-center'>
               <Button
                 onClick={matchTeams}
-                className='h-11 rounded-xl bg-white px-5 text-base font-semibold text-[#12091f] transition hover:bg-slate-200'
+                className='h-11 rounded-xl bg-white px-5 text-base font-semibold text-[#12091f] transition hover:bg-slate-200 animate-tada animate-delay-500 animate-iteration-count-once'
               >
                 Sortear
               </Button>

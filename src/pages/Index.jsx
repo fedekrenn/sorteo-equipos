@@ -25,7 +25,7 @@ export default function Index () {
   return (
     <main id='main-content' tabIndex='-1'>
       <section className='mx-auto grid w-full max-w-4xl gap-8 px-4 pt-6 md:px-6 md:pt-8'>
-        <header className='arcade-hero mx-auto max-w-3xl rounded-3xl border border-white/15 bg-black/55 px-6 py-8 text-center backdrop-blur-xl md:px-10'>
+        <header className='arcade-hero mx-auto max-w-3xl rounded-3xl border border-white/15 bg-black/55 px-6 py-8 text-center backdrop-blur-xl md:px-10 animate-blurred-fade-in animate-duration-slow'>
           <h1 className='text-balance text-3xl font-semibold tracking-tight text-white md:text-5xl'>
             Sorteos de equipos para cada partido
           </h1>
@@ -35,8 +35,8 @@ export default function Index () {
         </header>
 
         <ul className='grid gap-4 md:grid-cols-3'>
-          {modes.map((mode) => (
-            <li key={mode.to}>
+          {modes.map((mode, index) => (
+            <li key={mode.to} className={`animate-fade-in-up animate-duration-slow ${index === 0 ? 'animate-delay-100' : index === 1 ? 'animate-delay-200' : 'animate-delay-300'}`}>
               <Card className='arcade-card h-full border-white/15 bg-black/60 text-white backdrop-blur-xl'>
                 <CardHeader className='space-y-2'>
                   <CardTitle className='text-xl'>{mode.title}</CardTitle>
