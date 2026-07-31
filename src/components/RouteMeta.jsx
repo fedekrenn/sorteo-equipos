@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { useLocation } from 'react-router-dom'
+import { useLocation } from 'react-router'
 
 const SITE_URL = 'https://sorteo-equipos.vercel.app'
 const OG_IMAGE_URL = `${SITE_URL}/open-graph.webp`

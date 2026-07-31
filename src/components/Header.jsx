@@ -1,5 +1,5 @@
 // React Router Dom
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router'
 // Assets
 import image from '../assets/logo.webp'
 
