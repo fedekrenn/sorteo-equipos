@@ -13,7 +13,7 @@ import ResultsGrid from '@components/ResultsGrid'
 // Services
 import { getTwoRandomTeams } from '@services/getTeamData'
 
-export default function RandomTeams () {
+export default function RandomTeams() {
   const [teams, setTeams] = useState([])
   const [includeCountries, setIncludeCountries] = useState(false)
 
@@ -24,41 +24,42 @@ export default function RandomTeams () {
       confetti({
         particleCount: 100,
         spread: 70,
-        origin: { y: 0.6 }
+        origin: { y: 0.6 },
       })
       setTimeout(() => {
         // Scroll to the bottom of the page to see the teams
         window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' })
       }, 150)
-    } catch (error) {
+    }
+    catch (error) {
       toast.error(error.message)
     }
   }
 
   return (
-    <main id='main-content' tabIndex='-1'>
+    <main id="main-content" tabIndex="-1">
       <SortSection
-        title='Partido aleatorio'
-        subtitle='Obtené dos equipos al instante para arrancar un cruce rápido.'
+        title="Partido aleatorio"
+        subtitle="Obtené dos equipos al instante para arrancar un cruce rápido."
       >
-        <Card className='arcade-card border-white/15 bg-black/55 text-white backdrop-blur-xl'>
-          <CardContent className='space-y-6 pt-6'>
+        <Card className="arcade-card border-white/15 bg-black/55 text-white backdrop-blur-xl">
+          <CardContent className="space-y-6 pt-6">
             <Toaster />
-            <div className='mx-auto flex items-center justify-center gap-2'>
+            <div className="mx-auto flex items-center justify-center gap-2">
               <Checkbox
-                id='includeCountriesRandom'
+                id="includeCountriesRandom"
                 checked={includeCountries}
-                onCheckedChange={(checked) => setIncludeCountries(Boolean(checked))}
-                className='border-white/30 bg-black/50'
+                onCheckedChange={checked => setIncludeCountries(Boolean(checked))}
+                className="border-white/30 bg-black/50"
               />
-              <Label htmlFor='includeCountriesRandom' className='cursor-pointer text-sm font-medium text-slate-200'>
+              <Label htmlFor="includeCountriesRandom" className="cursor-pointer text-sm font-medium text-slate-200">
                 Incluir países
               </Label>
             </div>
-            <div className='text-center'>
+            <div className="text-center">
               <Button
                 onClick={matchTeams}
-                className='h-11 rounded-xl bg-white px-5 text-base font-semibold text-[#12091f] transition hover:bg-slate-200 animate-tada animate-delay-500 animate-iteration-count-once'
+                className="h-11 rounded-xl bg-white px-5 text-base font-semibold text-[#12091f] transition hover:bg-slate-200 animate-tada animate-delay-500 animate-iteration-count-once"
               >
                 Sortear
               </Button>

@@ -2,7 +2,7 @@ import teamsData from '../data/teams.json'
 
 const countriesQuantity = teamsData.data.filter(team => team.type === 'country').length
 
-function randomSort (array) {
+function randomSort(array) {
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
     [array[i], array[j]] = [array[j], array[i]]
@@ -18,7 +18,8 @@ export const getSimpleTeamData = (listOfPlayers, includeCountries) => {
       throw new Error(`No puedes seleccionar más de ${countriesQuantity} jugadores si incluyes selecciones`)
     }
     teams = teamsData.data.filter(team => team.type === 'country')
-  } else {
+  }
+  else {
     teams = teamsData.data.filter(team => team.type === 'club')
   }
 
@@ -27,13 +28,13 @@ export const getSimpleTeamData = (listOfPlayers, includeCountries) => {
 
   return sortedPlayers.map((player, i) => {
     const { name, image } = sortedSquads[i]
-    const capitalizedName = player.replace(/^\w/, (c) => c.toUpperCase())
+    const capitalizedName = player.replace(/^\w/, c => c.toUpperCase())
     return {
       players: capitalizedName,
       squad: {
         name,
-        image
-      }
+        image,
+      },
     }
   })
 }
@@ -43,7 +44,8 @@ export const getPairTeamData = (listOfPlayers, includeCountries) => {
 
   if (includeCountries) {
     teams = teamsData.data.filter(team => team.type === 'country')
-  } else {
+  }
+  else {
     teams = teamsData.data.filter(team => team.type === 'club')
   }
 
@@ -51,11 +53,12 @@ export const getPairTeamData = (listOfPlayers, includeCountries) => {
   const sortedSquads = randomSort(teams)
 
   const pairs = sortedPlayers.reduce((acc, player, i) => {
-    const capitalizedName = player.replace(/^\w/, (c) => c.toUpperCase())
+    const capitalizedName = player.replace(/^\w/, c => c.toUpperCase())
 
     if (i % 2 === 0) {
       acc.push([capitalizedName])
-    } else {
+    }
+    else {
       acc[acc.length - 1].push(capitalizedName)
     }
     return acc
@@ -65,7 +68,7 @@ export const getPairTeamData = (listOfPlayers, includeCountries) => {
     if (teamData.length === 1) {
       return {
         players: teamData,
-        squad: null
+        squad: null,
       }
     }
     const { name, image } = sortedSquads[i]
@@ -74,8 +77,8 @@ export const getPairTeamData = (listOfPlayers, includeCountries) => {
       players: teamData,
       squad: {
         name,
-        image
-      }
+        image,
+      },
     }
   })
 }
@@ -85,7 +88,8 @@ export const getTwoRandomTeams = (includeCountries) => {
 
   if (includeCountries) {
     teams = teamsData.data.filter(team => team.type === 'country')
-  } else {
+  }
+  else {
     teams = teamsData.data.filter(team => team.type === 'club')
   }
 

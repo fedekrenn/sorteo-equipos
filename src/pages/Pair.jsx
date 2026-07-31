@@ -7,14 +7,14 @@ import ResultsGrid from '@components/ResultsGrid'
 // Services
 import { getPairTeamData } from '@services/getTeamData'
 
-export default function Pair () {
+export default function Pair() {
   const [matches, setMatches] = useState([])
 
   return (
-    <main id='main-content' tabIndex='-1'>
+    <main id="main-content" tabIndex="-1">
       <SortSection
-        title='Modo 2 vs 2'
-        subtitle='Armá duplas balanceadas y sorteá rivales con una visual de partido real.'
+        title="Modo 2 vs 2"
+        subtitle="Armá duplas balanceadas y sorteá rivales con una visual de partido real."
       >
         <DataForm matchFunction={getPairTeamData} setMatches={setMatches} />
       </SortSection>

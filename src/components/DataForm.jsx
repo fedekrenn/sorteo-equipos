@@ -11,7 +11,7 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import confetti from 'canvas-confetti'
 
-export default function DataForm ({ matchFunction, setMatches }) {
+export default function DataForm({ matchFunction, setMatches }) {
   const [playersCount, setPlayersCount] = useState(0)
   const [players, setPlayers] = useState([])
   const [includeCountries, setIncludeCountries] = useState(false)
@@ -64,7 +64,7 @@ export default function DataForm ({ matchFunction, setMatches }) {
     if (firstInvalidIndex == null) return
 
     const target = formRef.current?.querySelector(
-      `[data-player-input-index="${firstInvalidIndex}"]`
+      `[data-player-input-index="${firstInvalidIndex}"]`,
     )
     target?.focus()
   }
@@ -88,7 +88,8 @@ export default function DataForm ({ matchFunction, setMatches }) {
       const trimmedPlayer = player.trim()
       if (trimmedPlayer === '') {
         emptyErrors[index] = 'No ingresaste el nombre del jugador.'
-      } else if (trimmedPlayer.length < 3) {
+      }
+      else if (trimmedPlayer.length < 3) {
         lengthErrors[index] = 'El nombre debe tener al menos 3 caracteres.'
       }
     })
@@ -140,14 +141,14 @@ export default function DataForm ({ matchFunction, setMatches }) {
     try {
       const generatedMatches = matchFunction(
         playersWithTrimmedNames,
-        includeCountries
+        includeCountries,
       )
       setMatches(generatedMatches)
       setStatusMessage('Sorteo completado. Tus resultados ya estan disponibles.')
       confetti({
         particleCount: 100,
         spread: 70,
-        origin: { y: 0.6 }
+        origin: { y: 0.6 },
       })
       statusRef.current?.focus()
       setIsDisabled(true)
@@ -155,10 +156,11 @@ export default function DataForm ({ matchFunction, setMatches }) {
         // Scroll to the bottom of the page to see the teams
         window.scrollTo({
           top: document.body.scrollHeight,
-          behavior: 'smooth'
+          behavior: 'smooth',
         })
       }, 150)
-    } catch (error) {
+    }
+    catch (error) {
       setStatusMessage(error.message)
       toast.error(error.message)
     }
@@ -174,16 +176,16 @@ export default function DataForm ({ matchFunction, setMatches }) {
   }
 
   return (
-    <Card className='arcade-card border-white/15 bg-black/55 text-white backdrop-blur-xl animate-fade-in-up animate-delay-200'>
-      <CardContent className='pt-6'>
-        <form ref={formRef} onSubmit={handleSubmit} className='flex flex-col gap-4' noValidate>
+    <Card className="arcade-card border-white/15 bg-black/55 text-white backdrop-blur-xl animate-fade-in-up animate-delay-200">
+      <CardContent className="pt-6">
+        <form ref={formRef} onSubmit={handleSubmit} className="flex flex-col gap-4" noValidate>
           <Toaster />
           <p
             ref={statusRef}
             tabIndex={-1}
-            role='status'
-            aria-live='polite'
-            className='text-sm text-slate-200'
+            role="status"
+            aria-live="polite"
+            className="text-sm text-slate-200"
           >
             {statusMessage}
           </p>
@@ -194,7 +196,7 @@ export default function DataForm ({ matchFunction, setMatches }) {
           />
           {Array.from({ length: playersCount }).map((_, index) => {
             return (
-              <div key={index} className='animate-fade-in-down animate-duration-fast'>
+              <div key={index} className="animate-fade-in-down animate-duration-fast">
                 <Input
                   index={index}
                   handlePlayerChange={handlePlayerChange}
@@ -203,44 +205,44 @@ export default function DataForm ({ matchFunction, setMatches }) {
               </div>
             )
           })}
-          <div className='mx-auto my-2 flex items-center gap-2'>
+          <div className="mx-auto my-2 flex items-center gap-2">
             <Checkbox
-              id='includeCountries'
+              id="includeCountries"
               checked={includeCountries}
-              onCheckedChange={(checked) => setIncludeCountries(Boolean(checked))}
-              className='border-white/30 bg-black/50'
+              onCheckedChange={checked => setIncludeCountries(Boolean(checked))}
+              className="border-white/30 bg-black/50"
             />
             <Label
-              htmlFor='includeCountries'
-              className='cursor-pointer text-sm font-medium text-slate-200'
+              htmlFor="includeCountries"
+              className="cursor-pointer text-sm font-medium text-slate-200"
             >
               Incluir países (opcional)
             </Label>
           </div>
-          <div className='mx-auto flex flex-wrap items-center justify-center gap-3'>
+          <div className="mx-auto flex flex-wrap items-center justify-center gap-3">
             {isDisabled
               ? (
-                <Button
-                  type='button'
-                  variant='secondary'
-                  className='h-11 rounded-xl border border-white/10 bg-slate-600 px-5 text-base font-semibold text-white hover:bg-slate-600'
-                  onClick={() => toast.info('¡Esperá unos segundos antes de volver a sortear!')}
-                >
-                  Sortear
-                </Button>
+                  <Button
+                    type="button"
+                    variant="secondary"
+                    className="h-11 rounded-xl border border-white/10 bg-slate-600 px-5 text-base font-semibold text-white hover:bg-slate-600"
+                    onClick={() => toast.info('¡Esperá unos segundos antes de volver a sortear!')}
+                  >
+                    Sortear
+                  </Button>
                 )
               : (
-                <Button
-                  type='submit'
-                  className='h-11 rounded-xl bg-white px-5 text-base font-semibold text-[#12091f] transition hover:bg-slate-200'
-                >
-                  Sortear
-                </Button>
+                  <Button
+                    type="submit"
+                    className="h-11 rounded-xl bg-white px-5 text-base font-semibold text-[#12091f] transition hover:bg-slate-200"
+                  >
+                    Sortear
+                  </Button>
                 )}
             <Button
-              type='reset'
-              variant='outline'
-              className='h-11 rounded-xl border-white/30 bg-transparent px-5 text-base font-semibold text-white hover:bg-white/10'
+              type="reset"
+              variant="outline"
+              className="h-11 rounded-xl border-white/30 bg-transparent px-5 text-base font-semibold text-white hover:bg-white/10"
               onClick={handleReset}
             >
               Limpiar

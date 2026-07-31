@@ -5,10 +5,10 @@ import {
   SelectContent,
   SelectItem,
   SelectTrigger,
-  SelectValue
+  SelectValue,
 } from '@/components/ui/select'
 
-export default function Select ({ setPlayersCount, playersCount, handleReset }) {
+export default function Select({ setPlayersCount, playersCount, handleReset }) {
   const selectID = useId()
 
   const handleSetPlayersCount = (value) => {
@@ -19,20 +19,20 @@ export default function Select ({ setPlayersCount, playersCount, handleReset }) 
   }
 
   return (
-    <div className='space-y-2'>
-      <Label htmlFor={selectID} className='text-sm font-medium text-slate-200'>Cantidad de jugadores</Label>
+    <div className="space-y-2">
+      <Label htmlFor={selectID} className="text-sm font-medium text-slate-200">Cantidad de jugadores</Label>
       <ShadSelect
         value={playersCount > 0 ? String(playersCount) : undefined}
         onValueChange={handleSetPlayersCount}
       >
         <SelectTrigger
           id={selectID}
-          className='h-11 w-full rounded-xl border-white/20 bg-black/35 px-3 text-slate-100'
-          size='default'
+          className="h-11 w-full rounded-xl border-white/20 bg-black/35 px-3 text-slate-100"
+          size="default"
         >
-          <SelectValue placeholder='Elegir opción' />
+          <SelectValue placeholder="Elegir opción" />
         </SelectTrigger>
-        <SelectContent className='rounded-xl border-white/20 bg-[#12091f] text-slate-100'>
+        <SelectContent className="rounded-xl border-white/20 bg-[#12091f] text-slate-100">
           {Array.from({ length: 9 }, (_, index) => {
             const value = String(index + 2)
             return <SelectItem key={value} value={value}>{value}</SelectItem>

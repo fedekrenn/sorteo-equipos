@@ -12,20 +12,20 @@ const Single = lazy(async () => await import('@pages/Single'))
 const RandomTeams = lazy(async () => await import('@pages/RandomTeams'))
 const NotFound = lazy(async () => await import('@pages/NotFound'))
 
-function App () {
+function App() {
   return (
-    <div className='app-shell'>
-      <div className='app-bg-overlay' aria-hidden='true' />
+    <div className="app-shell">
+      <div className="app-bg-overlay" aria-hidden="true" />
       <RouteMeta />
       <Header />
       <ModeNav />
-      <Suspense fallback={<main id='main-content' tabIndex='-1' />}>
+      <Suspense fallback={<main id="main-content" tabIndex="-1" />}>
         <Routes>
-          <Route path='/' element={<Index />} />
-          <Route path='/1vs1' element={<Single />} />
-          <Route path='/2vs2' element={<Pair />} />
-          <Route path='/random-teams' element={<RandomTeams />} />
-          <Route path='*' element={<NotFound />} />
+          <Route path="/" element={<Index />} />
+          <Route path="/1vs1" element={<Single />} />
+          <Route path="/2vs2" element={<Pair />} />
+          <Route path="/random-teams" element={<RandomTeams />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </Suspense>
       <Analytics />

@@ -9,36 +9,36 @@ const ROUTE_META = {
     title: 'Sorteo de equipos de fútbol | 1 vs 1, 2 vs 2 y aleatorio',
     description: 'Sorteá equipos de fútbol en segundos para 1 vs 1, 2 vs 2 o partido aleatorio. Armá cruces rápidos, claros y listos para jugar con tus amigos.',
     path: '/',
-    robots: 'index, follow'
+    robots: 'index, follow',
   },
   '/1vs1': {
     title: 'Modo 1 vs 1 | Sorteo de equipos de fútbol',
     description: 'Generá cruces 1 vs 1 con jugadores y equipos al azar en segundos. Ideal para partidos rápidos y organizados.',
     path: '/1vs1',
-    robots: 'index, follow'
+    robots: 'index, follow',
   },
   '/2vs2': {
     title: 'Modo 2 vs 2 | Sorteo de equipos de fútbol',
     description: 'Armá duplas equilibradas y sorteá equipos para partidos 2 vs 2 de forma simple, rápida y clara.',
     path: '/2vs2',
-    robots: 'index, follow'
+    robots: 'index, follow',
   },
   '/random-teams': {
     title: 'Partido aleatorio | Sorteo de equipos de fútbol',
     description: 'Obtené dos equipos al instante para arrancar un partido aleatorio sin cargar jugadores manualmente.',
     path: '/random-teams',
-    robots: 'index, follow'
-  }
+    robots: 'index, follow',
+  },
 }
 
 const FALLBACK_META = {
   title: 'Página no encontrada | Sorteo de equipos de fútbol',
   description: 'La ruta que buscás no existe. Volvé al inicio para seguir sorteando equipos de fútbol.',
   path: '/',
-  robots: 'noindex, nofollow'
+  robots: 'noindex, nofollow',
 }
 
-function upsertMetaTag (selector, attr, key, value) {
+function upsertMetaTag(selector, attr, key, value) {
   let element = document.head.querySelector(selector)
 
   if (element == null) {
@@ -50,7 +50,7 @@ function upsertMetaTag (selector, attr, key, value) {
   element.setAttribute('content', value)
 }
 
-function upsertCanonical (href) {
+function upsertCanonical(href) {
   let canonical = document.head.querySelector('link[rel="canonical"]')
 
   if (canonical == null) {
@@ -62,7 +62,7 @@ function upsertCanonical (href) {
   canonical.setAttribute('href', href)
 }
 
-export default function RouteMeta () {
+export default function RouteMeta() {
   const location = useLocation()
 
   useEffect(() => {
