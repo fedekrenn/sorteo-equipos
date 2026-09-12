@@ -46,6 +46,6 @@
     "globals": "^16.0.0",
     "tailwindcss": "4.2.4",
     "vite": "7.3.6",
-    "vitest": "4.1.0"
+    "vitest": "4.1.11"
   }
 }
